@@ -4,3 +4,4 @@ venv*
 runs*
 __pycache__/
 models
+results
