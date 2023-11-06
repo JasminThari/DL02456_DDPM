@@ -3,3 +3,4 @@ venv*
 .idea*
 runs*
 __pycache__/
+models
