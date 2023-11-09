@@ -19,7 +19,17 @@ def save_images(images, path, **kwargs):
     ndarr = grid.permute(1, 2, 0).to('cpu').numpy()
     im = Image.fromarray(ndarr)
     im.save(path)
-print("Adrian er en tosse")
+
+def get_data_mnist(args):
+    transforms = torchvision.transforms.Compose([
+        torchvision.transforms.ToTensor(),
+        torchvision.transforms.Normalize((0.5, 0.5, 0.5), (0.5, 0.5, 0.5))])#slet evt de 2 dimensioner da det er MNIST
+
+    dataset = torchvision.datasets.MNIST(root="", download=True, train = True, transform=transforms)
+    dataloader = DataLoader(dataset, batch_size=args.batch_size, shuffle=True)
+    return dataloader
+
+print("Vi er tosser")
 print("Kom nu videre, du er sååå langsom")
 def get_data(args):
     transforms = torchvision.transforms.Compose([
@@ -31,10 +41,3 @@ def get_data(args):
     dataset = torchvision.datasets.ImageFolder(args.dataset_path, transform=transforms)
     dataloader = DataLoader(dataset, batch_size=args.batch_size, shuffle=True)
     return dataloader
-
-
-def setup_logging(run_name):
-    os.makedirs("models", exist_ok=True)
-    os.makedirs("results", exist_ok=True)
-    os.makedirs(os.path.join("models", run_name), exist_ok=True)
-    os.makedirs(os.path.join("results", run_name), exist_ok=True)
