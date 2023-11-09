@@ -19,7 +19,7 @@ def save_images(images, path, **kwargs):
     ndarr = grid.permute(1, 2, 0).to('cpu').numpy()
     im = Image.fromarray(ndarr)
     im.save(path)
-print("Christian er en tosse")
+print("Adrian er en tosse")
 print("Kom nu videre, du er sååå langsom")
 def get_data(args):
     transforms = torchvision.transforms.Compose([
