@@ -1,0 +1,17 @@
+Traceback (most recent call last):
+  File "DDPM.py", line 138, in <module>
+  File "DDPM.py", line 75, in train
+    model = UNet().to(device)
+  File "/work3/s204148/DL02456_DDPM/venv3/lib/python3.8/site-packages/torch/nn/modules/module.py", line 907, in to
+    return self._apply(convert)
+  File "/work3/s204148/DL02456_DDPM/venv3/lib/python3.8/site-packages/torch/nn/modules/module.py", line 578, in _apply
+    module._apply(fn)
+  File "/work3/s204148/DL02456_DDPM/venv3/lib/python3.8/site-packages/torch/nn/modules/module.py", line 578, in _apply
+    module._apply(fn)
+  File "/work3/s204148/DL02456_DDPM/venv3/lib/python3.8/site-packages/torch/nn/modules/module.py", line 578, in _apply
+    module._apply(fn)
+  File "/work3/s204148/DL02456_DDPM/venv3/lib/python3.8/site-packages/torch/nn/modules/module.py", line 601, in _apply
+    param_applied = fn(param)
+  File "/work3/s204148/DL02456_DDPM/venv3/lib/python3.8/site-packages/torch/nn/modules/module.py", line 905, in convert
+    return t.to(device, dtype if t.is_floating_point() or t.is_complex() else None, non_blocking)
+KeyboardInterrupt

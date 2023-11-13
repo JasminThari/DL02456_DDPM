@@ -1,0 +1,212 @@
+{
+    "os": "Linux-5.4.258-1.el7.elrepo.x86_64-x86_64-with-glibc2.2.5",
+    "python": "3.8.4",
+    "heartbeatAt": "2023-11-13T15:00:11.635179",
+    "startedAt": "2023-11-13T15:00:10.014068",
+    "docker": null,
+    "cuda": null,
+    "args": [],
+    "state": "running",
+    "program": "DDPM.py",
+    "codePathLocal": "DDPM.py",
+    "codePath": "DDPM.py",
+    "git": {
+        "remote": "https://github.com/JasminThari/DL02456_DDPM.git",
+        "commit": "2d12e0c3612c11f8f2ad620109ec21185d499b71"
+    },
+    "email": "dr.rawstone@outlook.com",
+    "root": "/work3/s204148/DL02456_DDPM",
+    "host": "n-62-12-19",
+    "username": "s204148",
+    "executable": "/work3/s204148/DL02456_DDPM/venv3/bin/python",
+    "cpu_count": 32,
+    "cpu_count_logical": 32,
+    "cpu_freq": {
+        "current": 1827.8150312500002,
+        "min": 1200.0,
+        "max": 2900.0
+    },
+    "cpu_freq_per_core": [
+        {
+            "current": 1200.045,
+            "min": 1200.0,
+            "max": 2900.0
+        },
+        {
+            "current": 2330.212,
+            "min": 1200.0,
+            "max": 2900.0
+        },
+        {
+            "current": 1200.437,
+            "min": 1200.0,
+            "max": 2900.0
+        },
+        {
+            "current": 2899.999,
+            "min": 1200.0,
+            "max": 2900.0
+        },
+        {
+            "current": 1200.101,
+            "min": 1200.0,
+            "max": 2900.0
+        },
+        {
+            "current": 1201.27,
+            "min": 1200.0,
+            "max": 2900.0
+        },
+        {
+            "current": 1532.141,
+            "min": 1200.0,
+            "max": 2900.0
+        },
+        {
+            "current": 1222.091,
+            "min": 1200.0,
+            "max": 2900.0
+        },
+        {
+            "current": 1200.243,
+            "min": 1200.0,
+            "max": 2900.0
+        },
+        {
+            "current": 1883.731,
+            "min": 1200.0,
+            "max": 2900.0
+        },
+        {
+            "current": 2588.519,
+            "min": 1200.0,
+            "max": 2900.0
+        },
+        {
+            "current": 2900.001,
+            "min": 1200.0,
+            "max": 2900.0
+        },
+        {
+            "current": 2893.356,
+            "min": 1200.0,
+            "max": 2900.0
+        },
+        {
+            "current": 2900.003,
+            "min": 1200.0,
+            "max": 2900.0
+        },
+        {
+            "current": 1325.294,
+            "min": 1200.0,
+            "max": 2900.0
+        },
+        {
+            "current": 2560.062,
+            "min": 1200.0,
+            "max": 2900.0
+        },
+        {
+            "current": 1973.096,
+            "min": 1200.0,
+            "max": 2900.0
+        },
+        {
+            "current": 2482.83,
+            "min": 1200.0,
+            "max": 2900.0
+        },
+        {
+            "current": 1767.444,
+            "min": 1200.0,
+            "max": 2900.0
+        },
+        {
+            "current": 1249.244,
+            "min": 1200.0,
+            "max": 2900.0
+        },
+        {
+            "current": 1200.02,
+            "min": 1200.0,
+            "max": 2900.0
+        },
+        {
+            "current": 1810.076,
+            "min": 1200.0,
+            "max": 2900.0
+        },
+        {
+            "current": 2819.205,
+            "min": 1200.0,
+            "max": 2900.0
+        },
+        {
+            "current": 2186.86,
+            "min": 1200.0,
+            "max": 2900.0
+        },
+        {
+            "current": 1840.841,
+            "min": 1200.0,
+            "max": 2900.0
+        },
+        {
+            "current": 1222.686,
+            "min": 1200.0,
+            "max": 2900.0
+        },
+        {
+            "current": 1200.007,
+            "min": 1200.0,
+            "max": 2900.0
+        },
+        {
+            "current": 2899.999,
+            "min": 1200.0,
+            "max": 2900.0
+        },
+        {
+            "current": 1200.007,
+            "min": 1200.0,
+            "max": 2900.0
+        },
+        {
+            "current": 1200.034,
+            "min": 1200.0,
+            "max": 2900.0
+        },
+        {
+            "current": 1200.18,
+            "min": 1200.0,
+            "max": 2900.0
+        },
+        {
+            "current": 1200.047,
+            "min": 1200.0,
+            "max": 2900.0
+        }
+    ],
+    "disk": {
+        "/": {
+            "total": 71.9168586730957,
+            "used": 7.182014465332031
+        }
+    },
+    "gpu": "NVIDIA A100-PCIE-40GB",
+    "gpu_count": 2,
+    "gpu_devices": [
+        {
+            "name": "NVIDIA A100-PCIE-40GB",
+            "memory_total": 42949672960
+        },
+        {
+            "name": "NVIDIA A100-PCIE-40GB",
+            "memory_total": 42949672960
+        }
+    ],
+    "memory": {
+        "total": 755.5554542541504
+    }
+}

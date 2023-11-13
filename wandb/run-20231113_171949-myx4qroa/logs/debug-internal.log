@@ -1,0 +1,377 @@
+2023-11-13 17:19:49,760 INFO    StreamThr :2921 [internal.py:wandb_internal():86] W&B internal server running at pid: 2921, started at: 2023-11-13 17:19:49.758643
+2023-11-13 17:19:49,764 DEBUG   HandlerThread:2921 [handler.py:handle_request():146] handle_request: status
+2023-11-13 17:19:49,768 INFO    WriterThread:2921 [datastore.py:open_for_write():85] open: /work3/s204148/DL02456_DDPM/wandb/run-20231113_171949-myx4qroa/run-myx4qroa.wandb
+2023-11-13 17:19:49,770 DEBUG   SenderThread:2921 [sender.py:send():380] send: header
+2023-11-13 17:19:49,811 DEBUG   SenderThread:2921 [sender.py:send():380] send: run
+2023-11-13 17:19:50,251 INFO    SenderThread:2921 [dir_watcher.py:__init__():211] watching files in: /work3/s204148/DL02456_DDPM/wandb/run-20231113_171949-myx4qroa/files
+2023-11-13 17:19:50,252 INFO    SenderThread:2921 [sender.py:_start_run_threads():1124] run started: myx4qroa with start time 1699892389.763732
+2023-11-13 17:19:50,270 DEBUG   HandlerThread:2921 [handler.py:handle_request():146] handle_request: check_version
+2023-11-13 17:19:50,271 DEBUG   SenderThread:2921 [sender.py:send_request():407] send_request: check_version
+2023-11-13 17:19:50,375 DEBUG   HandlerThread:2921 [handler.py:handle_request():146] handle_request: run_start
+2023-11-13 17:19:50,396 DEBUG   HandlerThread:2921 [system_info.py:__init__():32] System info init
+2023-11-13 17:19:50,397 DEBUG   HandlerThread:2921 [system_info.py:__init__():47] System info init done
+2023-11-13 17:19:50,398 INFO    HandlerThread:2921 [system_monitor.py:start():194] Starting system monitor
+2023-11-13 17:19:50,398 INFO    SystemMonitor:2921 [system_monitor.py:_start():158] Starting system asset monitoring threads
+2023-11-13 17:19:50,398 INFO    HandlerThread:2921 [system_monitor.py:probe():214] Collecting system info
+2023-11-13 17:19:50,400 INFO    SystemMonitor:2921 [interfaces.py:start():190] Started cpu monitoring
+2023-11-13 17:19:50,402 INFO    SystemMonitor:2921 [interfaces.py:start():190] Started disk monitoring
+2023-11-13 17:19:50,403 INFO    SystemMonitor:2921 [interfaces.py:start():190] Started gpu monitoring
+2023-11-13 17:19:50,404 INFO    SystemMonitor:2921 [interfaces.py:start():190] Started memory monitoring
+2023-11-13 17:19:50,405 INFO    SystemMonitor:2921 [interfaces.py:start():190] Started network monitoring
+2023-11-13 17:19:50,424 DEBUG   HandlerThread:2921 [system_info.py:probe():196] Probing system
+2023-11-13 17:19:50,433 DEBUG   HandlerThread:2921 [system_info.py:_probe_git():181] Probing git
+2023-11-13 17:19:50,474 DEBUG   HandlerThread:2921 [system_info.py:_probe_git():189] Probing git done
+2023-11-13 17:19:50,475 DEBUG   HandlerThread:2921 [system_info.py:probe():244] Probing system done
+2023-11-13 17:19:50,475 DEBUG   HandlerThread:2921 [system_monitor.py:probe():223] {'os': 'Linux-5.4.258-1.el7.elrepo.x86_64-x86_64-with-glibc2.2.5', 'python': '3.8.4', 'heartbeatAt': '2023-11-13T16:19:50.425015', 'startedAt': '2023-11-13T16:19:49.732059', 'docker': None, 'cuda': None, 'args': (), 'state': 'running', 'program': '/work3/s204148/DL02456_DDPM/DDPM.py', 'codePathLocal': 'DDPM.py', 'codePath': 'DDPM.py', 'git': {'remote': 'https://github.com/JasminThari/DL02456_DDPM.git', 'commit': '2d12e0c3612c11f8f2ad620109ec21185d499b71'}, 'email': 'dr.rawstone@outlook.com', 'root': '/work3/s204148/DL02456_DDPM', 'host': 'n-62-12-19', 'username': 's204148', 'executable': '/work3/s204148/DL02456_DDPM/venv3/bin/python', 'cpu_count': 32, 'cpu_count_logical': 32, 'cpu_freq': {'current': 1750.7139375000002, 'min': 1200.0, 'max': 2900.0}, 'cpu_freq_per_core': [{'current': 1251.808, 'min': 1200.0, 'max': 2900.0}, {'current': 1200.103, 'min': 1200.0, 'max': 2900.0}, {'current': 1383.166, 'min': 1200.0, 'max': 2900.0}, {'current': 1200.044, 'min': 1200.0, 'max': 2900.0}, {'current': 1913.113, 'min': 1200.0, 'max': 2900.0}, {'current': 1200.073, 'min': 1200.0, 'max': 2900.0}, {'current': 1200.141, 'min': 1200.0, 'max': 2900.0}, {'current': 1200.077, 'min': 1200.0, 'max': 2900.0}, {'current': 1200.059, 'min': 1200.0, 'max': 2900.0}, {'current': 1200.486, 'min': 1200.0, 'max': 2900.0}, {'current': 2900.0, 'min': 1200.0, 'max': 2900.0}, {'current': 2899.999, 'min': 1200.0, 'max': 2900.0}, {'current': 1200.33, 'min': 1200.0, 'max': 2900.0}, {'current': 1200.09, 'min': 1200.0, 'max': 2900.0}, {'current': 1610.472, 'min': 1200.0, 'max': 2900.0}, {'current': 2899.999, 'min': 1200.0, 'max': 2900.0}, {'current': 2605.047, 'min': 1200.0, 'max': 2900.0}, {'current': 1200.012, 'min': 1200.0, 'max': 2900.0}, {'current': 1410.133, 'min': 1200.0, 'max': 2900.0}, {'current': 1238.092, 'min': 1200.0, 'max': 2900.0}, {'current': 2638.728, 'min': 1200.0, 'max': 2900.0}, {'current': 1200.048, 'min': 1200.0, 'max': 2900.0}, {'current': 1475.506, 'min': 1200.0, 'max': 2900.0}, {'current': 1203.529, 'min': 1200.0, 'max': 2900.0}, {'current': 2411.339, 'min': 1200.0, 'max': 2900.0}, {'current': 1612.087, 'min': 1200.0, 'max': 2900.0}, {'current': 2900.0, 'min': 1200.0, 'max': 2900.0}, {'current': 1700.637, 'min': 1200.0, 'max': 2900.0}, {'current': 1871.295, 'min': 1200.0, 'max': 2900.0}, {'current': 2793.587, 'min': 1200.0, 'max': 2900.0}, {'current': 1202.846, 'min': 1200.0, 'max': 2900.0}, {'current': 2900.0, 'min': 1200.0, 'max': 2900.0}], 'disk': {'/': {'total': 71.9168586730957, 'used': 7.182121276855469}}, 'gpu': 'NVIDIA A100-PCIE-40GB', 'gpu_count': 2, 'gpu_devices': [{'name': 'NVIDIA A100-PCIE-40GB', 'memory_total': 42949672960}, {'name': 'NVIDIA A100-PCIE-40GB', 'memory_total': 42949672960}], 'memory': {'total': 755.5554542541504}}
+2023-11-13 17:19:50,476 INFO    HandlerThread:2921 [system_monitor.py:probe():224] Finished collecting system info
+2023-11-13 17:19:50,476 INFO    HandlerThread:2921 [system_monitor.py:probe():227] Publishing system info
+2023-11-13 17:19:50,477 DEBUG   HandlerThread:2921 [system_info.py:_save_pip():52] Saving list of pip packages installed into the current environment
+2023-11-13 17:19:50,479 DEBUG   HandlerThread:2921 [system_info.py:_save_pip():68] Saving pip packages done
+2023-11-13 17:19:50,485 INFO    HandlerThread:2921 [system_monitor.py:probe():229] Finished publishing system info
+2023-11-13 17:19:50,516 DEBUG   SenderThread:2921 [sender.py:send():380] send: files
+2023-11-13 17:19:50,517 INFO    SenderThread:2921 [sender.py:_save_file():1380] saving file wandb-metadata.json with policy now
+2023-11-13 17:19:50,529 DEBUG   HandlerThread:2921 [handler.py:handle_request():146] handle_request: stop_status
+2023-11-13 17:19:50,529 DEBUG   HandlerThread:2921 [handler.py:handle_request():146] handle_request: internal_messages
+2023-11-13 17:19:50,530 DEBUG   SenderThread:2921 [sender.py:send_request():407] send_request: stop_status
+2023-11-13 17:19:50,850 DEBUG   SenderThread:2921 [sender.py:send():380] send: telemetry
+2023-11-13 17:19:50,851 DEBUG   SenderThread:2921 [sender.py:send():380] send: telemetry
+2023-11-13 17:19:50,852 DEBUG   SenderThread:2921 [sender.py:send():380] send: config
+2023-11-13 17:19:50,852 DEBUG   SenderThread:2921 [sender.py:send():380] send: config
+2023-11-13 17:19:50,853 DEBUG   SenderThread:2921 [sender.py:send():380] send: config
+2023-11-13 17:19:51,248 INFO    wandb-upload_0:2921 [upload_job.py:push():131] Uploaded file /tmp/tmp_jfosepswandb/acrw5t83-wandb-metadata.json
+2023-11-13 17:19:51,255 INFO    Thread-12 :2921 [dir_watcher.py:_on_file_created():271] file/dir created: /work3/s204148/DL02456_DDPM/wandb/run-20231113_171949-myx4qroa/files/requirements.txt
+2023-11-13 17:19:51,257 INFO    Thread-12 :2921 [dir_watcher.py:_on_file_created():271] file/dir created: /work3/s204148/DL02456_DDPM/wandb/run-20231113_171949-myx4qroa/files/wandb-metadata.json
+2023-11-13 17:19:54,854 DEBUG   HandlerThread:2921 [handler.py:handle_request():146] handle_request: status_report
+2023-11-13 17:19:59,855 DEBUG   HandlerThread:2921 [handler.py:handle_request():146] handle_request: status_report
+2023-11-13 17:20:04,856 DEBUG   HandlerThread:2921 [handler.py:handle_request():146] handle_request: status_report
+2023-11-13 17:20:05,529 DEBUG   HandlerThread:2921 [handler.py:handle_request():146] handle_request: stop_status
+2023-11-13 17:20:05,530 DEBUG   HandlerThread:2921 [handler.py:handle_request():146] handle_request: internal_messages
+2023-11-13 17:20:05,530 DEBUG   SenderThread:2921 [sender.py:send_request():407] send_request: stop_status
+2023-11-13 17:20:10,167 DEBUG   HandlerThread:2921 [handler.py:handle_request():146] handle_request: status_report
+2023-11-13 17:20:10,285 INFO    Thread-12 :2921 [dir_watcher.py:_on_file_created():271] file/dir created: /work3/s204148/DL02456_DDPM/wandb/run-20231113_171949-myx4qroa/files/output.log
+2023-11-13 17:20:12,291 INFO    Thread-12 :2921 [dir_watcher.py:_on_file_modified():288] file/dir modified: /work3/s204148/DL02456_DDPM/wandb/run-20231113_171949-myx4qroa/files/output.log
+2023-11-13 17:20:15,207 DEBUG   HandlerThread:2921 [handler.py:handle_request():146] handle_request: status_report
+2023-11-13 17:20:20,213 DEBUG   HandlerThread:2921 [handler.py:handle_request():146] handle_request: status_report
+2023-11-13 17:20:20,529 DEBUG   HandlerThread:2921 [handler.py:handle_request():146] handle_request: internal_messages
+2023-11-13 17:20:20,529 DEBUG   HandlerThread:2921 [handler.py:handle_request():146] handle_request: stop_status
+2023-11-13 17:20:20,530 DEBUG   SenderThread:2921 [sender.py:send_request():407] send_request: stop_status
+2023-11-13 17:20:21,313 INFO    Thread-12 :2921 [dir_watcher.py:_on_file_modified():288] file/dir modified: /work3/s204148/DL02456_DDPM/wandb/run-20231113_171949-myx4qroa/files/config.yaml
+2023-11-13 17:20:25,767 DEBUG   HandlerThread:2921 [handler.py:handle_request():146] handle_request: status_report
+2023-11-13 17:20:30,768 DEBUG   HandlerThread:2921 [handler.py:handle_request():146] handle_request: status_report
+2023-11-13 17:20:35,530 DEBUG   HandlerThread:2921 [handler.py:handle_request():146] handle_request: internal_messages
+2023-11-13 17:20:35,531 DEBUG   HandlerThread:2921 [handler.py:handle_request():146] handle_request: stop_status
+2023-11-13 17:20:35,532 DEBUG   SenderThread:2921 [sender.py:send_request():407] send_request: stop_status
+2023-11-13 17:20:36,713 DEBUG   HandlerThread:2921 [handler.py:handle_request():146] handle_request: status_report
+2023-11-13 17:20:41,715 DEBUG   HandlerThread:2921 [handler.py:handle_request():146] handle_request: status_report
+2023-11-13 17:20:46,716 DEBUG   HandlerThread:2921 [handler.py:handle_request():146] handle_request: status_report
+2023-11-13 17:20:50,406 DEBUG   SystemMonitor:2921 [system_monitor.py:_start():172] Starting system metrics aggregation loop
+2023-11-13 17:20:50,409 DEBUG   SenderThread:2921 [sender.py:send():380] send: stats
+2023-11-13 17:20:50,530 DEBUG   HandlerThread:2921 [handler.py:handle_request():146] handle_request: internal_messages
+2023-11-13 17:20:50,531 DEBUG   HandlerThread:2921 [handler.py:handle_request():146] handle_request: stop_status
+2023-11-13 17:20:50,532 DEBUG   SenderThread:2921 [sender.py:send_request():407] send_request: stop_status
+2023-11-13 17:20:51,808 DEBUG   HandlerThread:2921 [handler.py:handle_request():146] handle_request: status_report
+2023-11-13 17:20:56,809 DEBUG   HandlerThread:2921 [handler.py:handle_request():146] handle_request: status_report
+2023-11-13 17:21:01,810 DEBUG   HandlerThread:2921 [handler.py:handle_request():146] handle_request: status_report
+2023-11-13 17:21:05,529 DEBUG   HandlerThread:2921 [handler.py:handle_request():146] handle_request: stop_status
+2023-11-13 17:21:05,530 DEBUG   SenderThread:2921 [sender.py:send_request():407] send_request: stop_status
+2023-11-13 17:21:05,569 DEBUG   HandlerThread:2921 [handler.py:handle_request():146] handle_request: internal_messages
+2023-11-13 17:21:07,757 DEBUG   HandlerThread:2921 [handler.py:handle_request():146] handle_request: status_report
+2023-11-13 17:21:12,758 DEBUG   HandlerThread:2921 [handler.py:handle_request():146] handle_request: status_report
+2023-11-13 17:21:17,759 DEBUG   HandlerThread:2921 [handler.py:handle_request():146] handle_request: status_report
+2023-11-13 17:21:20,411 DEBUG   SenderThread:2921 [sender.py:send():380] send: stats
+2023-11-13 17:21:20,530 DEBUG   HandlerThread:2921 [handler.py:handle_request():146] handle_request: internal_messages
+2023-11-13 17:21:20,531 DEBUG   HandlerThread:2921 [handler.py:handle_request():146] handle_request: stop_status
+2023-11-13 17:21:20,532 DEBUG   SenderThread:2921 [sender.py:send_request():407] send_request: stop_status
+2023-11-13 17:21:23,749 DEBUG   HandlerThread:2921 [handler.py:handle_request():146] handle_request: status_report
+2023-11-13 17:21:28,750 DEBUG   HandlerThread:2921 [handler.py:handle_request():146] handle_request: status_report
+2023-11-13 17:21:33,751 DEBUG   HandlerThread:2921 [handler.py:handle_request():146] handle_request: status_report
+2023-11-13 17:21:35,529 DEBUG   HandlerThread:2921 [handler.py:handle_request():146] handle_request: stop_status
+2023-11-13 17:21:35,530 DEBUG   HandlerThread:2921 [handler.py:handle_request():146] handle_request: internal_messages
+2023-11-13 17:21:35,531 DEBUG   SenderThread:2921 [sender.py:send_request():407] send_request: stop_status
+2023-11-13 17:21:39,722 DEBUG   HandlerThread:2921 [handler.py:handle_request():146] handle_request: status_report
+2023-11-13 17:21:44,723 DEBUG   HandlerThread:2921 [handler.py:handle_request():146] handle_request: status_report
+2023-11-13 17:21:49,724 DEBUG   HandlerThread:2921 [handler.py:handle_request():146] handle_request: status_report
+2023-11-13 17:21:50,412 DEBUG   SenderThread:2921 [sender.py:send():380] send: stats
+2023-11-13 17:21:50,529 DEBUG   HandlerThread:2921 [handler.py:handle_request():146] handle_request: stop_status
+2023-11-13 17:21:50,531 DEBUG   SenderThread:2921 [sender.py:send_request():407] send_request: stop_status
+2023-11-13 17:21:50,570 DEBUG   HandlerThread:2921 [handler.py:handle_request():146] handle_request: internal_messages
+2023-11-13 17:21:54,787 DEBUG   HandlerThread:2921 [handler.py:handle_request():146] handle_request: status_report
+2023-11-13 17:21:59,788 DEBUG   HandlerThread:2921 [handler.py:handle_request():146] handle_request: status_report
+2023-11-13 17:22:04,789 DEBUG   HandlerThread:2921 [handler.py:handle_request():146] handle_request: status_report
+2023-11-13 17:22:05,531 DEBUG   HandlerThread:2921 [handler.py:handle_request():146] handle_request: internal_messages
+2023-11-13 17:22:05,532 DEBUG   HandlerThread:2921 [handler.py:handle_request():146] handle_request: stop_status
+2023-11-13 17:22:05,533 DEBUG   SenderThread:2921 [sender.py:send_request():407] send_request: stop_status
+2023-11-13 17:22:09,796 DEBUG   HandlerThread:2921 [handler.py:handle_request():146] handle_request: status_report
+2023-11-13 17:22:14,797 DEBUG   HandlerThread:2921 [handler.py:handle_request():146] handle_request: status_report
+2023-11-13 17:22:19,798 DEBUG   HandlerThread:2921 [handler.py:handle_request():146] handle_request: status_report
+2023-11-13 17:22:20,415 DEBUG   SenderThread:2921 [sender.py:send():380] send: stats
+2023-11-13 17:22:20,531 DEBUG   HandlerThread:2921 [handler.py:handle_request():146] handle_request: stop_status
+2023-11-13 17:22:20,532 DEBUG   HandlerThread:2921 [handler.py:handle_request():146] handle_request: internal_messages
+2023-11-13 17:22:20,533 DEBUG   SenderThread:2921 [sender.py:send_request():407] send_request: stop_status
+2023-11-13 17:22:25,277 DEBUG   HandlerThread:2921 [handler.py:handle_request():146] handle_request: partial_history
+2023-11-13 17:22:25,279 DEBUG   SenderThread:2921 [sender.py:send():380] send: history
+2023-11-13 17:22:25,280 DEBUG   SenderThread:2921 [sender.py:send_request():407] send_request: summary_record
+2023-11-13 17:22:25,281 DEBUG   HandlerThread:2921 [handler.py:handle_request():146] handle_request: status_report
+2023-11-13 17:22:25,283 INFO    SenderThread:2921 [sender.py:_save_file():1380] saving file wandb-summary.json with policy end
+2023-11-13 17:22:25,670 DEBUG   SenderThread:2921 [sender.py:send():380] send: files
+2023-11-13 17:22:25,671 INFO    SenderThread:2921 [sender.py:_save_file():1380] saving file media/images/Sampled Images_1_c9f74fe4197bfec3f364.png with policy now
+2023-11-13 17:22:25,681 DEBUG   SenderThread:2921 [sender.py:send():380] send: files
+2023-11-13 17:22:25,681 INFO    SenderThread:2921 [sender.py:_save_file():1380] saving file media/images/Sampled Images_1_5071e83fb0a5a6ab501f.png with policy now
+2023-11-13 17:22:25,691 DEBUG   SenderThread:2921 [sender.py:send():380] send: files
+2023-11-13 17:22:25,692 INFO    SenderThread:2921 [sender.py:_save_file():1380] saving file media/images/Sampled Images_1_52348a7e7bd0700461fb.png with policy now
+2023-11-13 17:22:25,732 INFO    Thread-12 :2921 [dir_watcher.py:_on_file_created():271] file/dir created: /work3/s204148/DL02456_DDPM/wandb/run-20231113_171949-myx4qroa/files/media/images/Sampled Images_1_52348a7e7bd0700461fb.png
+2023-11-13 17:22:25,733 INFO    Thread-12 :2921 [dir_watcher.py:_on_file_created():271] file/dir created: /work3/s204148/DL02456_DDPM/wandb/run-20231113_171949-myx4qroa/files/media/images/Sampled Images_1_c9f74fe4197bfec3f364.png
+2023-11-13 17:22:25,735 INFO    Thread-12 :2921 [dir_watcher.py:_on_file_created():271] file/dir created: /work3/s204148/DL02456_DDPM/wandb/run-20231113_171949-myx4qroa/files/media/images/Sampled Images_1_5071e83fb0a5a6ab501f.png
+2023-11-13 17:22:25,737 INFO    Thread-12 :2921 [dir_watcher.py:_on_file_created():271] file/dir created: /work3/s204148/DL02456_DDPM/wandb/run-20231113_171949-myx4qroa/files/wandb-summary.json
+2023-11-13 17:22:25,737 INFO    Thread-12 :2921 [dir_watcher.py:_on_file_created():271] file/dir created: /work3/s204148/DL02456_DDPM/wandb/run-20231113_171949-myx4qroa/files/media/images
+2023-11-13 17:22:25,738 INFO    Thread-12 :2921 [dir_watcher.py:_on_file_created():271] file/dir created: /work3/s204148/DL02456_DDPM/wandb/run-20231113_171949-myx4qroa/files/media
+2023-11-13 17:22:25,809 DEBUG   SenderThread:2921 [sender.py:send():380] send: files
+2023-11-13 17:22:25,809 INFO    SenderThread:2921 [sender.py:_save_file():1380] saving file media/images/Sampled Images_1_f6673519e80a9055c469.png with policy now
+2023-11-13 17:22:25,820 DEBUG   SenderThread:2921 [sender.py:send():380] send: files
+2023-11-13 17:22:25,821 INFO    SenderThread:2921 [sender.py:_save_file():1380] saving file media/images/Sampled Images_1_0d83c8d49d8d1ba12c04.png with policy now
+2023-11-13 17:22:25,829 DEBUG   SenderThread:2921 [sender.py:send():380] send: files
+2023-11-13 17:22:25,830 INFO    SenderThread:2921 [sender.py:_save_file():1380] saving file media/images/Sampled Images_1_b6ee79fd11ddb72fbfca.png with policy now
+2023-11-13 17:22:25,836 DEBUG   HandlerThread:2921 [handler.py:handle_request():146] handle_request: partial_history
+2023-11-13 17:22:25,839 DEBUG   SenderThread:2921 [sender.py:send():380] send: history
+2023-11-13 17:22:25,840 DEBUG   SenderThread:2921 [sender.py:send_request():407] send_request: summary_record
+2023-11-13 17:22:25,847 INFO    SenderThread:2921 [sender.py:_save_file():1380] saving file wandb-summary.json with policy end
+2023-11-13 17:22:26,087 INFO    wandb-upload_0:2921 [upload_job.py:push():131] Uploaded file /tmp/tmp_jfosepswandb/q9l1ucvz-media/images/Sampled Images_1_c9f74fe4197bfec3f364.png
+2023-11-13 17:22:26,235 INFO    wandb-upload_1:2921 [upload_job.py:push():131] Uploaded file /tmp/tmp_jfosepswandb/nqurc9zi-media/images/Sampled Images_1_5071e83fb0a5a6ab501f.png
+2023-11-13 17:22:26,275 DEBUG   HandlerThread:2921 [handler.py:handle_request():146] handle_request: partial_history
+2023-11-13 17:22:26,277 DEBUG   HandlerThread:2921 [handler.py:handle_request():146] handle_request: partial_history
+2023-11-13 17:22:26,277 DEBUG   SenderThread:2921 [sender.py:send():380] send: history
+2023-11-13 17:22:26,279 DEBUG   SenderThread:2921 [sender.py:send_request():407] send_request: summary_record
+2023-11-13 17:22:26,282 INFO    SenderThread:2921 [sender.py:_save_file():1380] saving file wandb-summary.json with policy end
+2023-11-13 17:22:26,283 DEBUG   SenderThread:2921 [sender.py:send():380] send: history
+2023-11-13 17:22:26,285 DEBUG   SenderThread:2921 [sender.py:send_request():407] send_request: summary_record
+2023-11-13 17:22:26,285 INFO    wandb-upload_2:2921 [upload_job.py:push():131] Uploaded file /tmp/tmp_jfosepswandb/i8kd13n6-media/images/Sampled Images_1_52348a7e7bd0700461fb.png
+2023-11-13 17:22:26,293 INFO    SenderThread:2921 [sender.py:_save_file():1380] saving file wandb-summary.json with policy end
+2023-11-13 17:22:26,379 INFO    wandb-upload_4:2921 [upload_job.py:push():131] Uploaded file /tmp/tmp_jfosepswandb/uxtss4hs-media/images/Sampled Images_1_0d83c8d49d8d1ba12c04.png
+2023-11-13 17:22:26,390 INFO    wandb-upload_5:2921 [upload_job.py:push():131] Uploaded file /tmp/tmp_jfosepswandb/w21ldppb-media/images/Sampled Images_1_b6ee79fd11ddb72fbfca.png
+2023-11-13 17:22:26,443 INFO    wandb-upload_3:2921 [upload_job.py:push():131] Uploaded file /tmp/tmp_jfosepswandb/inioz7o1-media/images/Sampled Images_1_f6673519e80a9055c469.png
+2023-11-13 17:22:26,737 INFO    Thread-12 :2921 [dir_watcher.py:_on_file_modified():288] file/dir modified: /work3/s204148/DL02456_DDPM/wandb/run-20231113_171949-myx4qroa/files/wandb-summary.json
+2023-11-13 17:22:26,739 INFO    Thread-12 :2921 [dir_watcher.py:_on_file_created():271] file/dir created: /work3/s204148/DL02456_DDPM/wandb/run-20231113_171949-myx4qroa/files/media/images/Sampled Images_1_0d83c8d49d8d1ba12c04.png
+2023-11-13 17:22:26,741 INFO    Thread-12 :2921 [dir_watcher.py:_on_file_created():271] file/dir created: /work3/s204148/DL02456_DDPM/wandb/run-20231113_171949-myx4qroa/files/media/images/Sampled Images_1_b6ee79fd11ddb72fbfca.png
+2023-11-13 17:22:26,742 INFO    Thread-12 :2921 [dir_watcher.py:_on_file_created():271] file/dir created: /work3/s204148/DL02456_DDPM/wandb/run-20231113_171949-myx4qroa/files/media/images/Sampled Images_1_f6673519e80a9055c469.png
+2023-11-13 17:22:26,777 INFO    wandb-upload_1:2921 [upload_job.py:push():131] Uploaded file /tmp/tmp_jfosepswandb/2qmc30cq-media/images/Sampled Images_1_5071e83fb0a5a6ab501f.png
+2023-11-13 17:22:26,896 INFO    wandb-upload_0:2921 [upload_job.py:push():131] Uploaded file /tmp/tmp_jfosepswandb/plv9d9l1-media/images/Sampled Images_1_c9f74fe4197bfec3f364.png
+2023-11-13 17:22:26,935 INFO    wandb-upload_2:2921 [upload_job.py:push():131] Uploaded file /tmp/tmp_jfosepswandb/yid8hehd-media/images/Sampled Images_1_52348a7e7bd0700461fb.png
+2023-11-13 17:22:27,282 INFO    wandb-upload_5:2921 [upload_job.py:push():131] Uploaded file /tmp/tmp_jfosepswandb/tcc4919z-media/images/Sampled Images_1_f6673519e80a9055c469.png
+2023-11-13 17:22:27,289 INFO    wandb-upload_3:2921 [upload_job.py:push():131] Uploaded file /tmp/tmp_jfosepswandb/sxbk83ln-media/images/Sampled Images_1_b6ee79fd11ddb72fbfca.png
+2023-11-13 17:22:27,337 INFO    wandb-upload_4:2921 [upload_job.py:push():131] Uploaded file /tmp/tmp_jfosepswandb/qh8a3dcj-media/images/Sampled Images_1_0d83c8d49d8d1ba12c04.png
+2023-11-13 17:22:28,748 INFO    Thread-12 :2921 [dir_watcher.py:_on_file_modified():288] file/dir modified: /work3/s204148/DL02456_DDPM/wandb/run-20231113_171949-myx4qroa/files/output.log
+2023-11-13 17:22:30,295 DEBUG   HandlerThread:2921 [handler.py:handle_request():146] handle_request: status_report
+2023-11-13 17:22:35,296 DEBUG   HandlerThread:2921 [handler.py:handle_request():146] handle_request: status_report
+2023-11-13 17:22:35,532 DEBUG   HandlerThread:2921 [handler.py:handle_request():146] handle_request: internal_messages
+2023-11-13 17:22:35,533 DEBUG   HandlerThread:2921 [handler.py:handle_request():146] handle_request: stop_status
+2023-11-13 17:22:35,535 DEBUG   SenderThread:2921 [sender.py:send_request():407] send_request: stop_status
+2023-11-13 17:22:40,752 DEBUG   HandlerThread:2921 [handler.py:handle_request():146] handle_request: status_report
+2023-11-13 17:22:45,753 DEBUG   HandlerThread:2921 [handler.py:handle_request():146] handle_request: status_report
+2023-11-13 17:22:50,417 DEBUG   SenderThread:2921 [sender.py:send():380] send: stats
+2023-11-13 17:22:50,531 DEBUG   HandlerThread:2921 [handler.py:handle_request():146] handle_request: stop_status
+2023-11-13 17:22:50,532 DEBUG   HandlerThread:2921 [handler.py:handle_request():146] handle_request: internal_messages
+2023-11-13 17:22:50,532 DEBUG   SenderThread:2921 [sender.py:send_request():407] send_request: stop_status
+2023-11-13 17:22:51,723 DEBUG   HandlerThread:2921 [handler.py:handle_request():146] handle_request: status_report
+2023-11-13 17:22:56,723 DEBUG   HandlerThread:2921 [handler.py:handle_request():146] handle_request: status_report
+2023-11-13 17:23:01,724 DEBUG   HandlerThread:2921 [handler.py:handle_request():146] handle_request: status_report
+2023-11-13 17:23:05,531 DEBUG   HandlerThread:2921 [handler.py:handle_request():146] handle_request: stop_status
+2023-11-13 17:23:05,532 DEBUG   HandlerThread:2921 [handler.py:handle_request():146] handle_request: internal_messages
+2023-11-13 17:23:05,532 DEBUG   SenderThread:2921 [sender.py:send_request():407] send_request: stop_status
+2023-11-13 17:23:06,789 DEBUG   HandlerThread:2921 [handler.py:handle_request():146] handle_request: status_report
+2023-11-13 17:23:11,790 DEBUG   HandlerThread:2921 [handler.py:handle_request():146] handle_request: status_report
+2023-11-13 17:23:16,791 DEBUG   HandlerThread:2921 [handler.py:handle_request():146] handle_request: status_report
+2023-11-13 17:23:20,419 DEBUG   SenderThread:2921 [sender.py:send():380] send: stats
+2023-11-13 17:23:20,531 DEBUG   HandlerThread:2921 [handler.py:handle_request():146] handle_request: stop_status
+2023-11-13 17:23:20,533 DEBUG   SenderThread:2921 [sender.py:send_request():407] send_request: stop_status
+2023-11-13 17:23:20,572 DEBUG   HandlerThread:2921 [handler.py:handle_request():146] handle_request: internal_messages
+2023-11-13 17:23:22,705 DEBUG   HandlerThread:2921 [handler.py:handle_request():146] handle_request: status_report
+2023-11-13 17:23:27,707 DEBUG   HandlerThread:2921 [handler.py:handle_request():146] handle_request: status_report
+2023-11-13 17:23:32,708 DEBUG   HandlerThread:2921 [handler.py:handle_request():146] handle_request: status_report
+2023-11-13 17:23:35,532 DEBUG   HandlerThread:2921 [handler.py:handle_request():146] handle_request: stop_status
+2023-11-13 17:23:35,533 DEBUG   HandlerThread:2921 [handler.py:handle_request():146] handle_request: internal_messages
+2023-11-13 17:23:35,534 DEBUG   SenderThread:2921 [sender.py:send_request():407] send_request: stop_status
+2023-11-13 17:23:37,721 DEBUG   HandlerThread:2921 [handler.py:handle_request():146] handle_request: status_report
+2023-11-13 17:23:42,722 DEBUG   HandlerThread:2921 [handler.py:handle_request():146] handle_request: status_report
+2023-11-13 17:23:47,724 DEBUG   HandlerThread:2921 [handler.py:handle_request():146] handle_request: status_report
+2023-11-13 17:23:50,421 DEBUG   SenderThread:2921 [sender.py:send():380] send: stats
+2023-11-13 17:23:50,532 DEBUG   HandlerThread:2921 [handler.py:handle_request():146] handle_request: stop_status
+2023-11-13 17:23:50,533 DEBUG   HandlerThread:2921 [handler.py:handle_request():146] handle_request: internal_messages
+2023-11-13 17:23:50,533 DEBUG   SenderThread:2921 [sender.py:send_request():407] send_request: stop_status
+2023-11-13 17:23:53,697 DEBUG   HandlerThread:2921 [handler.py:handle_request():146] handle_request: status_report
+2023-11-13 17:23:58,698 DEBUG   HandlerThread:2921 [handler.py:handle_request():146] handle_request: status_report
+2023-11-13 17:24:03,699 DEBUG   HandlerThread:2921 [handler.py:handle_request():146] handle_request: status_report
+2023-11-13 17:24:05,532 DEBUG   HandlerThread:2921 [handler.py:handle_request():146] handle_request: stop_status
+2023-11-13 17:24:05,533 DEBUG   SenderThread:2921 [sender.py:send_request():407] send_request: stop_status
+2023-11-13 17:24:05,572 DEBUG   HandlerThread:2921 [handler.py:handle_request():146] handle_request: internal_messages
+2023-11-13 17:24:08,729 DEBUG   HandlerThread:2921 [handler.py:handle_request():146] handle_request: status_report
+2023-11-13 17:24:13,730 DEBUG   HandlerThread:2921 [handler.py:handle_request():146] handle_request: status_report
+2023-11-13 17:24:18,731 DEBUG   HandlerThread:2921 [handler.py:handle_request():146] handle_request: status_report
+2023-11-13 17:24:20,423 DEBUG   SenderThread:2921 [sender.py:send():380] send: stats
+2023-11-13 17:24:20,532 DEBUG   HandlerThread:2921 [handler.py:handle_request():146] handle_request: stop_status
+2023-11-13 17:24:20,533 DEBUG   HandlerThread:2921 [handler.py:handle_request():146] handle_request: internal_messages
+2023-11-13 17:24:20,533 DEBUG   SenderThread:2921 [sender.py:send_request():407] send_request: stop_status
+2023-11-13 17:24:23,732 DEBUG   HandlerThread:2921 [handler.py:handle_request():146] handle_request: status_report
+2023-11-13 17:24:28,733 DEBUG   HandlerThread:2921 [handler.py:handle_request():146] handle_request: status_report
+2023-11-13 17:24:33,735 DEBUG   HandlerThread:2921 [handler.py:handle_request():146] handle_request: status_report
+2023-11-13 17:24:35,532 DEBUG   HandlerThread:2921 [handler.py:handle_request():146] handle_request: stop_status
+2023-11-13 17:24:35,533 DEBUG   HandlerThread:2921 [handler.py:handle_request():146] handle_request: internal_messages
+2023-11-13 17:24:35,533 DEBUG   SenderThread:2921 [sender.py:send_request():407] send_request: stop_status
+2023-11-13 17:24:35,742 DEBUG   HandlerThread:2921 [handler.py:handle_request():146] handle_request: partial_history
+2023-11-13 17:24:35,744 DEBUG   SenderThread:2921 [sender.py:send():380] send: history
+2023-11-13 17:24:35,745 DEBUG   SenderThread:2921 [sender.py:send_request():407] send_request: summary_record
+2023-11-13 17:24:35,749 INFO    SenderThread:2921 [sender.py:_save_file():1380] saving file wandb-summary.json with policy end
+2023-11-13 17:24:35,800 DEBUG   SenderThread:2921 [sender.py:send():380] send: files
+2023-11-13 17:24:35,801 INFO    SenderThread:2921 [sender.py:_save_file():1380] saving file media/images/Sampled Images_5_19174085eb27519825dc.png with policy now
+2023-11-13 17:24:35,808 DEBUG   SenderThread:2921 [sender.py:send():380] send: files
+2023-11-13 17:24:35,809 INFO    SenderThread:2921 [sender.py:_save_file():1380] saving file media/images/Sampled Images_5_9b30da56934c8c251dfe.png with policy now
+2023-11-13 17:24:35,812 DEBUG   SenderThread:2921 [sender.py:send():380] send: files
+2023-11-13 17:24:35,818 INFO    SenderThread:2921 [sender.py:_save_file():1380] saving file media/images/Sampled Images_5_29e6faad445e086b2ed4.png with policy now
+2023-11-13 17:24:35,820 DEBUG   SenderThread:2921 [sender.py:send():380] send: files
+2023-11-13 17:24:35,821 INFO    SenderThread:2921 [sender.py:_save_file():1380] saving file media/images/Sampled Images_5_2f49b127294382cd89f9.png with policy now
+2023-11-13 17:24:35,828 DEBUG   SenderThread:2921 [sender.py:send():380] send: files
+2023-11-13 17:24:35,829 INFO    SenderThread:2921 [sender.py:_save_file():1380] saving file media/images/Sampled Images_5_a2d00cba236d8b667806.png with policy now
+2023-11-13 17:24:35,831 DEBUG   SenderThread:2921 [sender.py:send():380] send: files
+2023-11-13 17:24:35,831 INFO    SenderThread:2921 [sender.py:_save_file():1380] saving file media/images/Sampled Images_5_f843141e3542e3b0cbf1.png with policy now
+2023-11-13 17:24:35,843 DEBUG   HandlerThread:2921 [handler.py:handle_request():146] handle_request: partial_history
+2023-11-13 17:24:35,844 DEBUG   SenderThread:2921 [sender.py:send():380] send: history
+2023-11-13 17:24:35,845 DEBUG   SenderThread:2921 [sender.py:send_request():407] send_request: summary_record
+2023-11-13 17:24:35,850 INFO    SenderThread:2921 [sender.py:_save_file():1380] saving file wandb-summary.json with policy end
+2023-11-13 17:24:36,235 DEBUG   HandlerThread:2921 [handler.py:handle_request():146] handle_request: partial_history
+2023-11-13 17:24:36,237 DEBUG   HandlerThread:2921 [handler.py:handle_request():146] handle_request: partial_history
+2023-11-13 17:24:36,237 DEBUG   SenderThread:2921 [sender.py:send():380] send: history
+2023-11-13 17:24:36,239 DEBUG   SenderThread:2921 [sender.py:send_request():407] send_request: summary_record
+2023-11-13 17:24:36,241 INFO    SenderThread:2921 [sender.py:_save_file():1380] saving file wandb-summary.json with policy end
+2023-11-13 17:24:36,242 DEBUG   SenderThread:2921 [sender.py:send():380] send: history
+2023-11-13 17:24:36,243 DEBUG   SenderThread:2921 [sender.py:send_request():407] send_request: summary_record
+2023-11-13 17:24:36,246 INFO    SenderThread:2921 [sender.py:_save_file():1380] saving file wandb-summary.json with policy end
+2023-11-13 17:24:36,271 INFO    wandb-upload_1:2921 [upload_job.py:push():131] Uploaded file /tmp/tmp_jfosepswandb/avvfuxaw-media/images/Sampled Images_5_19174085eb27519825dc.png
+2023-11-13 17:24:36,292 INFO    wandb-upload_3:2921 [upload_job.py:push():131] Uploaded file /tmp/tmp_jfosepswandb/lfaio6jd-media/images/Sampled Images_5_29e6faad445e086b2ed4.png
+2023-11-13 17:24:36,299 INFO    wandb-upload_0:2921 [upload_job.py:push():131] Uploaded file /tmp/tmp_jfosepswandb/4qkyu8gu-media/images/Sampled Images_5_2f49b127294382cd89f9.png
+2023-11-13 17:24:36,306 INFO    wandb-upload_2:2921 [upload_job.py:push():131] Uploaded file /tmp/tmp_jfosepswandb/ldutg2u0-media/images/Sampled Images_5_9b30da56934c8c251dfe.png
+2023-11-13 17:24:36,329 INFO    wandb-upload_4:2921 [upload_job.py:push():131] Uploaded file /tmp/tmp_jfosepswandb/orwlk2uk-media/images/Sampled Images_5_a2d00cba236d8b667806.png
+2023-11-13 17:24:36,354 INFO    wandb-upload_5:2921 [upload_job.py:push():131] Uploaded file /tmp/tmp_jfosepswandb/pfcejh08-media/images/Sampled Images_5_f843141e3542e3b0cbf1.png
+2023-11-13 17:24:36,381 INFO    Thread-12 :2921 [dir_watcher.py:_on_file_modified():288] file/dir modified: /work3/s204148/DL02456_DDPM/wandb/run-20231113_171949-myx4qroa/files/wandb-summary.json
+2023-11-13 17:24:36,382 INFO    Thread-12 :2921 [dir_watcher.py:_on_file_created():271] file/dir created: /work3/s204148/DL02456_DDPM/wandb/run-20231113_171949-myx4qroa/files/media/images/Sampled Images_5_a2d00cba236d8b667806.png
+2023-11-13 17:24:36,384 INFO    Thread-12 :2921 [dir_watcher.py:_on_file_created():271] file/dir created: /work3/s204148/DL02456_DDPM/wandb/run-20231113_171949-myx4qroa/files/media/images/Sampled Images_5_9b30da56934c8c251dfe.png
+2023-11-13 17:24:36,386 INFO    Thread-12 :2921 [dir_watcher.py:_on_file_created():271] file/dir created: /work3/s204148/DL02456_DDPM/wandb/run-20231113_171949-myx4qroa/files/media/images/Sampled Images_5_2f49b127294382cd89f9.png
+2023-11-13 17:24:36,387 INFO    Thread-12 :2921 [dir_watcher.py:_on_file_created():271] file/dir created: /work3/s204148/DL02456_DDPM/wandb/run-20231113_171949-myx4qroa/files/media/images/Sampled Images_5_19174085eb27519825dc.png
+2023-11-13 17:24:36,393 INFO    Thread-12 :2921 [dir_watcher.py:_on_file_created():271] file/dir created: /work3/s204148/DL02456_DDPM/wandb/run-20231113_171949-myx4qroa/files/media/images/Sampled Images_5_29e6faad445e086b2ed4.png
+2023-11-13 17:24:36,394 INFO    Thread-12 :2921 [dir_watcher.py:_on_file_created():271] file/dir created: /work3/s204148/DL02456_DDPM/wandb/run-20231113_171949-myx4qroa/files/media/images/Sampled Images_5_f843141e3542e3b0cbf1.png
+2023-11-13 17:24:36,401 INFO    Thread-12 :2921 [dir_watcher.py:_on_file_modified():288] file/dir modified: /work3/s204148/DL02456_DDPM/wandb/run-20231113_171949-myx4qroa/files/media/images
+2023-11-13 17:24:36,929 INFO    wandb-upload_4:2921 [upload_job.py:push():131] Uploaded file /tmp/tmp_jfosepswandb/od3nplfg-media/images/Sampled Images_5_2f49b127294382cd89f9.png
+2023-11-13 17:24:36,932 INFO    wandb-upload_0:2921 [upload_job.py:push():131] Uploaded file /tmp/tmp_jfosepswandb/gk8kbzm4-media/images/Sampled Images_5_9b30da56934c8c251dfe.png
+2023-11-13 17:24:36,987 INFO    wandb-upload_1:2921 [upload_job.py:push():131] Uploaded file /tmp/tmp_jfosepswandb/v9mcphg1-media/images/Sampled Images_5_a2d00cba236d8b667806.png
+2023-11-13 17:24:36,989 INFO    wandb-upload_5:2921 [upload_job.py:push():131] Uploaded file /tmp/tmp_jfosepswandb/xf2jjq3f-media/images/Sampled Images_5_29e6faad445e086b2ed4.png
+2023-11-13 17:24:37,002 INFO    wandb-upload_3:2921 [upload_job.py:push():131] Uploaded file /tmp/tmp_jfosepswandb/xi5tp3mp-media/images/Sampled Images_5_19174085eb27519825dc.png
+2023-11-13 17:24:37,005 INFO    wandb-upload_2:2921 [upload_job.py:push():131] Uploaded file /tmp/tmp_jfosepswandb/ynqrg0z4-media/images/Sampled Images_5_f843141e3542e3b0cbf1.png
+2023-11-13 17:24:37,386 INFO    Thread-12 :2921 [dir_watcher.py:_on_file_modified():288] file/dir modified: /work3/s204148/DL02456_DDPM/wandb/run-20231113_171949-myx4qroa/files/output.log
+2023-11-13 17:24:39,247 DEBUG   HandlerThread:2921 [handler.py:handle_request():146] handle_request: status_report
+2023-11-13 17:24:39,396 INFO    Thread-12 :2921 [dir_watcher.py:_on_file_modified():288] file/dir modified: /work3/s204148/DL02456_DDPM/wandb/run-20231113_171949-myx4qroa/files/output.log
+2023-11-13 17:24:44,248 DEBUG   HandlerThread:2921 [handler.py:handle_request():146] handle_request: status_report
+2023-11-13 17:24:49,249 DEBUG   HandlerThread:2921 [handler.py:handle_request():146] handle_request: status_report
+2023-11-13 17:24:50,424 DEBUG   SenderThread:2921 [sender.py:send():380] send: stats
+2023-11-13 17:24:50,532 DEBUG   HandlerThread:2921 [handler.py:handle_request():146] handle_request: stop_status
+2023-11-13 17:24:50,533 DEBUG   HandlerThread:2921 [handler.py:handle_request():146] handle_request: internal_messages
+2023-11-13 17:24:50,533 DEBUG   SenderThread:2921 [sender.py:send_request():407] send_request: stop_status
+2023-11-13 17:24:54,765 DEBUG   HandlerThread:2921 [handler.py:handle_request():146] handle_request: status_report
+2023-11-13 17:24:59,766 DEBUG   HandlerThread:2921 [handler.py:handle_request():146] handle_request: status_report
+2023-11-13 17:25:04,766 DEBUG   HandlerThread:2921 [handler.py:handle_request():146] handle_request: status_report
+2023-11-13 17:25:05,532 DEBUG   HandlerThread:2921 [handler.py:handle_request():146] handle_request: stop_status
+2023-11-13 17:25:05,533 DEBUG   HandlerThread:2921 [handler.py:handle_request():146] handle_request: internal_messages
+2023-11-13 17:25:05,534 DEBUG   SenderThread:2921 [sender.py:send_request():407] send_request: stop_status
+2023-11-13 17:25:09,782 DEBUG   HandlerThread:2921 [handler.py:handle_request():146] handle_request: status_report
+2023-11-13 17:25:14,783 DEBUG   HandlerThread:2921 [handler.py:handle_request():146] handle_request: status_report
+2023-11-13 17:25:19,784 DEBUG   HandlerThread:2921 [handler.py:handle_request():146] handle_request: status_report
+2023-11-13 17:25:20,429 DEBUG   SenderThread:2921 [sender.py:send():380] send: stats
+2023-11-13 17:25:20,533 DEBUG   HandlerThread:2921 [handler.py:handle_request():146] handle_request: stop_status
+2023-11-13 17:25:20,534 DEBUG   HandlerThread:2921 [handler.py:handle_request():146] handle_request: internal_messages
+2023-11-13 17:25:20,534 DEBUG   SenderThread:2921 [sender.py:send_request():407] send_request: stop_status
+2023-11-13 17:25:25,754 DEBUG   HandlerThread:2921 [handler.py:handle_request():146] handle_request: status_report
+2023-11-13 17:25:30,754 DEBUG   HandlerThread:2921 [handler.py:handle_request():146] handle_request: status_report
+2023-11-13 17:25:35,533 DEBUG   HandlerThread:2921 [handler.py:handle_request():146] handle_request: stop_status
+2023-11-13 17:25:35,534 DEBUG   SenderThread:2921 [sender.py:send_request():407] send_request: stop_status
+2023-11-13 17:25:35,573 DEBUG   HandlerThread:2921 [handler.py:handle_request():146] handle_request: internal_messages
+2023-11-13 17:25:35,761 DEBUG   HandlerThread:2921 [handler.py:handle_request():146] handle_request: status_report
+2023-11-13 17:25:40,768 DEBUG   HandlerThread:2921 [handler.py:handle_request():146] handle_request: status_report
+2023-11-13 17:25:45,769 DEBUG   HandlerThread:2921 [handler.py:handle_request():146] handle_request: status_report
+2023-11-13 17:25:50,428 DEBUG   SenderThread:2921 [sender.py:send():380] send: stats
+2023-11-13 17:25:50,533 DEBUG   HandlerThread:2921 [handler.py:handle_request():146] handle_request: stop_status
+2023-11-13 17:25:50,534 DEBUG   HandlerThread:2921 [handler.py:handle_request():146] handle_request: internal_messages
+2023-11-13 17:25:50,535 DEBUG   SenderThread:2921 [sender.py:send_request():407] send_request: stop_status
+2023-11-13 17:25:51,723 DEBUG   HandlerThread:2921 [handler.py:handle_request():146] handle_request: status_report
+2023-11-13 17:25:56,724 DEBUG   HandlerThread:2921 [handler.py:handle_request():146] handle_request: status_report
+2023-11-13 17:26:01,725 DEBUG   HandlerThread:2921 [handler.py:handle_request():146] handle_request: status_report
+2023-11-13 17:26:05,533 DEBUG   HandlerThread:2921 [handler.py:handle_request():146] handle_request: stop_status
+2023-11-13 17:26:05,534 DEBUG   HandlerThread:2921 [handler.py:handle_request():146] handle_request: internal_messages
+2023-11-13 17:26:05,535 DEBUG   SenderThread:2921 [sender.py:send_request():407] send_request: stop_status
+2023-11-13 17:26:06,728 DEBUG   HandlerThread:2921 [handler.py:handle_request():146] handle_request: status_report
+2023-11-13 17:26:11,729 DEBUG   HandlerThread:2921 [handler.py:handle_request():146] handle_request: status_report
+2023-11-13 17:26:16,730 DEBUG   HandlerThread:2921 [handler.py:handle_request():146] handle_request: status_report
+2023-11-13 17:26:20,429 DEBUG   SenderThread:2921 [sender.py:send():380] send: stats
+2023-11-13 17:26:20,533 DEBUG   HandlerThread:2921 [handler.py:handle_request():146] handle_request: stop_status
+2023-11-13 17:26:20,534 DEBUG   SenderThread:2921 [sender.py:send_request():407] send_request: stop_status
+2023-11-13 17:26:20,573 DEBUG   HandlerThread:2921 [handler.py:handle_request():146] handle_request: internal_messages
+2023-11-13 17:26:21,805 DEBUG   HandlerThread:2921 [handler.py:handle_request():146] handle_request: status_report
+2023-11-13 17:26:26,806 DEBUG   HandlerThread:2921 [handler.py:handle_request():146] handle_request: status_report
+2023-11-13 17:26:31,808 DEBUG   HandlerThread:2921 [handler.py:handle_request():146] handle_request: status_report
+2023-11-13 17:26:35,534 DEBUG   HandlerThread:2921 [handler.py:handle_request():146] handle_request: stop_status
+2023-11-13 17:26:35,535 DEBUG   HandlerThread:2921 [handler.py:handle_request():146] handle_request: internal_messages
+2023-11-13 17:26:35,536 DEBUG   SenderThread:2921 [sender.py:send_request():407] send_request: stop_status
+2023-11-13 17:26:37,773 DEBUG   HandlerThread:2921 [handler.py:handle_request():146] handle_request: status_report
+2023-11-13 17:26:42,774 DEBUG   HandlerThread:2921 [handler.py:handle_request():146] handle_request: status_report
+2023-11-13 17:26:43,516 DEBUG   HandlerThread:2921 [handler.py:handle_request():146] handle_request: partial_history
+2023-11-13 17:26:43,518 DEBUG   SenderThread:2921 [sender.py:send():380] send: history
+2023-11-13 17:26:43,519 DEBUG   SenderThread:2921 [sender.py:send_request():407] send_request: summary_record
+2023-11-13 17:26:43,522 INFO    SenderThread:2921 [sender.py:_save_file():1380] saving file wandb-summary.json with policy end
+2023-11-13 17:26:43,537 DEBUG   SenderThread:2921 [sender.py:send():380] send: files
+2023-11-13 17:26:43,537 INFO    SenderThread:2921 [sender.py:_save_file():1380] saving file media/images/Sampled Images_9_e1760f82bed437f4edb5.png with policy now
+2023-11-13 17:26:43,547 DEBUG   SenderThread:2921 [sender.py:send():380] send: files
+2023-11-13 17:26:43,547 INFO    SenderThread:2921 [sender.py:_save_file():1380] saving file media/images/Sampled Images_9_eaebde08969d6f96d4fa.png with policy now
+2023-11-13 17:26:43,549 DEBUG   SenderThread:2921 [sender.py:send():380] send: files
+2023-11-13 17:26:43,550 INFO    SenderThread:2921 [sender.py:_save_file():1380] saving file media/images/Sampled Images_9_6cc8226663a36bd9c397.png with policy now
+2023-11-13 17:26:43,556 DEBUG   SenderThread:2921 [sender.py:send():380] send: files
+2023-11-13 17:26:43,561 INFO    SenderThread:2921 [sender.py:_save_file():1380] saving file media/images/Sampled Images_9_086d3c08b54db363c1ee.png with policy now
+2023-11-13 17:26:43,562 DEBUG   SenderThread:2921 [sender.py:send():380] send: files
+2023-11-13 17:26:43,566 INFO    SenderThread:2921 [sender.py:_save_file():1380] saving file media/images/Sampled Images_9_988824d46d906c00bca9.png with policy now
+2023-11-13 17:26:43,568 DEBUG   SenderThread:2921 [sender.py:send():380] send: files
+2023-11-13 17:26:43,568 INFO    SenderThread:2921 [sender.py:_save_file():1380] saving file media/images/Sampled Images_9_bedb0bd05e1a18b2e598.png with policy now
+2023-11-13 17:26:43,578 DEBUG   HandlerThread:2921 [handler.py:handle_request():146] handle_request: partial_history
+2023-11-13 17:26:43,579 DEBUG   SenderThread:2921 [sender.py:send():380] send: history
+2023-11-13 17:26:43,580 DEBUG   SenderThread:2921 [sender.py:send_request():407] send_request: summary_record
+2023-11-13 17:26:43,591 INFO    SenderThread:2921 [sender.py:_save_file():1380] saving file wandb-summary.json with policy end
+2023-11-13 17:26:44,013 INFO    wandb-upload_1:2921 [upload_job.py:push():131] Uploaded file /tmp/tmp_jfosepswandb/lf24o60h-media/images/Sampled Images_9_eaebde08969d6f96d4fa.png
+2023-11-13 17:26:44,016 INFO    wandb-upload_2:2921 [upload_job.py:push():131] Uploaded file /tmp/tmp_jfosepswandb/mdcr2y1e-media/images/Sampled Images_9_988824d46d906c00bca9.png
+2023-11-13 17:26:44,016 INFO    wandb-upload_4:2921 [upload_job.py:push():131] Uploaded file /tmp/tmp_jfosepswandb/jbwssqge-media/images/Sampled Images_9_e1760f82bed437f4edb5.png
+2023-11-13 17:26:44,018 INFO    wandb-upload_0:2921 [upload_job.py:push():131] Uploaded file /tmp/tmp_jfosepswandb/6o8h54gz-media/images/Sampled Images_9_086d3c08b54db363c1ee.png
+2023-11-13 17:26:44,020 DEBUG   HandlerThread:2921 [handler.py:handle_request():146] handle_request: partial_history
+2023-11-13 17:26:44,021 DEBUG   HandlerThread:2921 [handler.py:handle_request():146] handle_request: partial_history
+2023-11-13 17:26:44,022 DEBUG   SenderThread:2921 [sender.py:send():380] send: history
+2023-11-13 17:26:44,023 DEBUG   SenderThread:2921 [sender.py:send_request():407] send_request: summary_record
+2023-11-13 17:26:44,025 INFO    SenderThread:2921 [sender.py:_save_file():1380] saving file wandb-summary.json with policy end
+2023-11-13 17:26:44,026 DEBUG   SenderThread:2921 [sender.py:send():380] send: history
+2023-11-13 17:26:44,027 DEBUG   SenderThread:2921 [sender.py:send_request():407] send_request: summary_record
+2023-11-13 17:26:44,029 INFO    SenderThread:2921 [sender.py:_save_file():1380] saving file wandb-summary.json with policy end
+2023-11-13 17:26:44,035 INFO    wandb-upload_3:2921 [upload_job.py:push():131] Uploaded file /tmp/tmp_jfosepswandb/clcos50j-media/images/Sampled Images_9_6cc8226663a36bd9c397.png
+2023-11-13 17:26:44,047 INFO    wandb-upload_5:2921 [upload_job.py:push():131] Uploaded file /tmp/tmp_jfosepswandb/n357tve7-media/images/Sampled Images_9_bedb0bd05e1a18b2e598.png
+2023-11-13 17:26:44,086 INFO    Thread-12 :2921 [dir_watcher.py:_on_file_modified():288] file/dir modified: /work3/s204148/DL02456_DDPM/wandb/run-20231113_171949-myx4qroa/files/wandb-summary.json
+2023-11-13 17:26:44,087 INFO    Thread-12 :2921 [dir_watcher.py:_on_file_created():271] file/dir created: /work3/s204148/DL02456_DDPM/wandb/run-20231113_171949-myx4qroa/files/media/images/Sampled Images_9_6cc8226663a36bd9c397.png
+2023-11-13 17:26:44,089 INFO    Thread-12 :2921 [dir_watcher.py:_on_file_created():271] file/dir created: /work3/s204148/DL02456_DDPM/wandb/run-20231113_171949-myx4qroa/files/media/images/Sampled Images_9_086d3c08b54db363c1ee.png
+2023-11-13 17:26:44,090 INFO    Thread-12 :2921 [dir_watcher.py:_on_file_created():271] file/dir created: /work3/s204148/DL02456_DDPM/wandb/run-20231113_171949-myx4qroa/files/media/images/Sampled Images_9_988824d46d906c00bca9.png
+2023-11-13 17:26:44,094 INFO    Thread-12 :2921 [dir_watcher.py:_on_file_created():271] file/dir created: /work3/s204148/DL02456_DDPM/wandb/run-20231113_171949-myx4qroa/files/media/images/Sampled Images_9_eaebde08969d6f96d4fa.png
+2023-11-13 17:26:44,095 INFO    Thread-12 :2921 [dir_watcher.py:_on_file_created():271] file/dir created: /work3/s204148/DL02456_DDPM/wandb/run-20231113_171949-myx4qroa/files/media/images/Sampled Images_9_e1760f82bed437f4edb5.png
+2023-11-13 17:26:44,099 INFO    Thread-12 :2921 [dir_watcher.py:_on_file_created():271] file/dir created: /work3/s204148/DL02456_DDPM/wandb/run-20231113_171949-myx4qroa/files/media/images/Sampled Images_9_bedb0bd05e1a18b2e598.png
+2023-11-13 17:26:44,100 INFO    Thread-12 :2921 [dir_watcher.py:_on_file_modified():288] file/dir modified: /work3/s204148/DL02456_DDPM/wandb/run-20231113_171949-myx4qroa/files/media/images
+2023-11-13 17:26:44,610 INFO    wandb-upload_4:2921 [upload_job.py:push():131] Uploaded file /tmp/tmp_jfosepswandb/fm6nhr3d-media/images/Sampled Images_9_086d3c08b54db363c1ee.png
+2023-11-13 17:26:44,640 INFO    wandb-upload_0:2921 [upload_job.py:push():131] Uploaded file /tmp/tmp_jfosepswandb/chj2jkhd-media/images/Sampled Images_9_bedb0bd05e1a18b2e598.png
+2023-11-13 17:26:44,664 INFO    wandb-upload_2:2921 [upload_job.py:push():131] Uploaded file /tmp/tmp_jfosepswandb/j6xczhu7-media/images/Sampled Images_9_eaebde08969d6f96d4fa.png
+2023-11-13 17:26:44,665 INFO    wandb-upload_3:2921 [upload_job.py:push():131] Uploaded file /tmp/tmp_jfosepswandb/dmszi6ne-media/images/Sampled Images_9_988824d46d906c00bca9.png
+2023-11-13 17:26:44,674 INFO    wandb-upload_1:2921 [upload_job.py:push():131] Uploaded file /tmp/tmp_jfosepswandb/9lziwdo1-media/images/Sampled Images_9_6cc8226663a36bd9c397.png
+2023-11-13 17:26:44,801 INFO    wandb-upload_5:2921 [upload_job.py:push():131] Uploaded file /tmp/tmp_jfosepswandb/hxowpnw3-media/images/Sampled Images_9_e1760f82bed437f4edb5.png
+2023-11-13 17:26:45,093 INFO    Thread-12 :2921 [dir_watcher.py:_on_file_modified():288] file/dir modified: /work3/s204148/DL02456_DDPM/wandb/run-20231113_171949-myx4qroa/files/output.log
+2023-11-13 17:26:48,031 DEBUG   HandlerThread:2921 [handler.py:handle_request():146] handle_request: status_report
+2023-11-13 17:26:50,433 DEBUG   SenderThread:2921 [sender.py:send():380] send: stats
+2023-11-13 17:26:50,535 DEBUG   HandlerThread:2921 [handler.py:handle_request():146] handle_request: stop_status
+2023-11-13 17:26:50,536 DEBUG   HandlerThread:2921 [handler.py:handle_request():146] handle_request: internal_messages
+2023-11-13 17:26:50,537 DEBUG   SenderThread:2921 [sender.py:send_request():407] send_request: stop_status
+2023-11-13 17:26:53,810 DEBUG   HandlerThread:2921 [handler.py:handle_request():146] handle_request: status_report
+2023-11-13 17:26:58,811 DEBUG   HandlerThread:2921 [handler.py:handle_request():146] handle_request: status_report

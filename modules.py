@@ -130,8 +130,8 @@ class UNet(nn.Module):
         super().__init__()
         self.device = device
         self.time_dim = time_dim
-        self.inc = DoubleConv(c_in, 64)
-        self.down1 = Down(64, 128)
+        self.inc = DoubleConv(c_in, 64) # 64
+        self.down1 = Down(64, 128) #64
         self.sa1 = SelfAttention(128, 32)
         self.down2 = Down(128, 256)
         self.sa2 = SelfAttention(256, 16)

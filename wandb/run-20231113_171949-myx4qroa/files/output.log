@@ -1,0 +1,11 @@
+
+0
+Calculating Inception Score:   0%|          | 0/10 [00:00<?, ?it/s]/work3/s204148/DL02456_DDPM/venv3/lib/python3.8/site-packages/scipy/stats/_entropy.py:135: RuntimeWarning: invalid value encountered in divide
+  pk = 1.0*pk / np.sum(pk, axis=axis, keepdims=True)
+/work3/s204148/DL02456_DDPM/venv3/lib/python3.8/site-packages/scipy/stats/_entropy.py:141: RuntimeWarning: invalid value encountered in divide
+  qk = 1.0*qk / np.sum(qk, axis=axis, keepdims=True)
+Calculating Inception Score: 100%|██████████| 10/10 [00:00<00:00, 820.93it/s]
+1
+Calculating Inception Score: 100%|██████████| 10/10 [00:00<00:00, 3751.28it/s]
+2
+Calculating Inception Score: 100%|██████████| 10/10 [00:00<00:00, 3356.79it/s]

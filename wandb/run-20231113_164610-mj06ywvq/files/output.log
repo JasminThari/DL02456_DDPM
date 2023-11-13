@@ -1,0 +1,10 @@
+
+0
+Traceback (most recent call last):
+  File "/work3/s204148/DL02456_DDPM/DDPM.py", line 188, in <module>
+  File "/work3/s204148/DL02456_DDPM/DDPM.py", line 132, in train
+    predicted_noise = model(noisy_image, random_timestep).to(device)
+  File "/work3/s204148/DL02456_DDPM/venv3/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1110, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/work3/s204148/DL02456_DDPM/modules.py", line 164, in forward
+    t = t.unsqueeze(-1).type(torch.float)

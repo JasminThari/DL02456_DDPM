@@ -1,0 +1,35 @@
+
+0
+Traceback (most recent call last):
+  File "DDPM.py", line 136, in <module>
+  File "DDPM.py", line 82, in train
+    img_batch = img_batch.to(device)
+  File "/work3/s204148/DL02456_DDPM/venv3/lib/python3.8/site-packages/torch/utils/data/dataloader.py", line 530, in __next__
+    data = self._next_data()
+  File "/work3/s204148/DL02456_DDPM/venv3/lib/python3.8/site-packages/torch/utils/data/dataloader.py", line 570, in _next_data
+    data = self._dataset_fetcher.fetch(index)  # may raise StopIteration
+  File "/work3/s204148/DL02456_DDPM/venv3/lib/python3.8/site-packages/torch/utils/data/_utils/fetch.py", line 49, in fetch
+    data = [self.dataset[idx] for idx in possibly_batched_index]
+  File "/work3/s204148/DL02456_DDPM/venv3/lib/python3.8/site-packages/torch/utils/data/_utils/fetch.py", line 49, in <listcomp>
+    data = [self.dataset[idx] for idx in possibly_batched_index]
+  File "/work3/s204148/DL02456_DDPM/venv3/lib/python3.8/site-packages/torchvision/datasets/folder.py", line 230, in __getitem__
+    sample = self.loader(path)
+  File "/work3/s204148/DL02456_DDPM/venv3/lib/python3.8/site-packages/torchvision/datasets/folder.py", line 269, in default_loader
+    return pil_loader(path)
+  File "/work3/s204148/DL02456_DDPM/venv3/lib/python3.8/site-packages/torchvision/datasets/folder.py", line 248, in pil_loader
+    img = Image.open(f)
+  File "/work3/s204148/DL02456_DDPM/venv3/lib/python3.8/site-packages/PIL/Image.py", line 3284, in open
+    im = _open_core(fp, filename, prefix, formats)
+  File "/work3/s204148/DL02456_DDPM/venv3/lib/python3.8/site-packages/PIL/Image.py", line 3270, in _open_core
+    im = factory(fp, filename)
+  File "/work3/s204148/DL02456_DDPM/venv3/lib/python3.8/site-packages/PIL/JpegImagePlugin.py", line 833, in jpeg_factory
+    im = JpegImageFile(fp, filename)
+  File "/work3/s204148/DL02456_DDPM/venv3/lib/python3.8/site-packages/PIL/ImageFile.py", line 117, in __init__
+    self._open()
+  File "/work3/s204148/DL02456_DDPM/venv3/lib/python3.8/site-packages/PIL/JpegImagePlugin.py", line 390, in _open
+    handler(self, i)
+  File "/work3/s204148/DL02456_DDPM/venv3/lib/python3.8/site-packages/PIL/JpegImagePlugin.py", line 270, in DQT
+    self.quantization[v & 15] = [data[i] for i in zigzag_index]
+  File "/work3/s204148/DL02456_DDPM/venv3/lib/python3.8/site-packages/PIL/JpegImagePlugin.py", line 270, in <listcomp>
+    self.quantization[v & 15] = [data[i] for i in zigzag_index]
+KeyboardInterrupt
