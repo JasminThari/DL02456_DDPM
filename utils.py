@@ -29,6 +29,16 @@ def get_data_mnist(args):
     dataloader = DataLoader(dataset, batch_size=args.batch_size, shuffle=True)
     return dataloader
 
+def get_data_cifar(args):
+    transforms = torchvision.transforms.Compose([
+        torchvision.transforms.ToTensor(),
+        torchvision.transforms.Normalize((0.5, 0.5, 0.5), (0.5, 0.5, 0.5))])#slet evt de 2 dimensioner da det er MNIST
+
+    dataset = torchvision.datasets.CIFAR10(root="", download=True, train = True, transform=transforms)
+    dataloader = DataLoader(dataset, batch_size=args.batch_size, shuffle=True)
+    return dataloader
+
+
 print("Vi er tosser")
 print("Kom nu videre, du er sååå langsom")
 def get_data(args):

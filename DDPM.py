@@ -13,7 +13,7 @@ from torch.utils.tensorboard import SummaryWriter
 import argparse
 
 class DiffusionProcess:
-    def __init__(self, img_shape = (3, 64, 64), T = 100, beta_min = 10e-4, beta_max=20e-3, device="cuda"):
+    def __init__(self, img_shape = (3, 64, 64), T = 100, beta_min = 10e-4, beta_max=20e-3, device="cuda",**kwargs):
         self.img_shape = img_shape
         self.T = T
         self.beta_min = beta_min
@@ -70,10 +70,10 @@ def train(args):
     model = UNet().to(device)
     optimizer = optim.AdamW(model.parameters(), lr=args.lr)
     mse = nn.MSELoss()
-    diffusion = DiffusionProcess(vars(args))
-
+    diffusion = DiffusionProcess(**vars(args))
     model.train()
     for epoch in range(args.epochs):
+        print(epoch)
         for img_batch, _ in dataloader:
             img_batch = img_batch.to(device)
             random_timestep = torch.randint(low=1, high=args.T, size=(1,)).to(device)
@@ -85,25 +85,26 @@ def train(args):
             loss.backward()
             optimizer.step()
 
-        print(epoch)
 
-    # sampled_images = diffusion.sample(model, n=images.shape[0])
-    # save_images(sampled_images, os.path.join("results", args.run_name, f"{epoch}.jpg"))
-    # torch.save(model.state_dict(), os.path.join("models", args.run_name, f"ckpt.pt"))
+
+        sampled_images = diffusion.sampling(model, num_img=6)
+        save_images(sampled_images, os.path.join("results", args.run_name, f"{epoch}.jpg"))
+        torch.save(model.state_dict(), os.path.join("models", args.run_name, f"ckpt.pt"))
 
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     args = parser.parse_args()
     args.epochs = 500
-    args.batch_size = 3
+    args.batch_size = 12
     args.device = "cuda"
     args.lr = 3e-4
     # args.img_shape = (1, 28, 28)
     args.img_shape = (3,64,64)
     args.image_size = 64 # landscape fix
     args.dataset_path = "landscape_img_folder"
-    args.T = 100
+    args.run_name = "TheSuperiorRun"
+    args.T = 1000
 
 
     train(args)
@@ -117,7 +118,7 @@ if __name__ == '__main__':
     # t = 2
     # noisy_image, noise = Diffusion.noising(x0, t)
 
-    sampled_image = Diffusion.sampling(model,1)
+    # sampled_image = Diffusion.sampling(model,1)
 
     # plt.imshow(sampled_image)
 

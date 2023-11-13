@@ -7,3 +7,5 @@ models
 results
 Logs
 results/Unconditional_DDPM_Train*
+/CIFAR10/
+/MNIST/
