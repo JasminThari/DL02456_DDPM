@@ -35,7 +35,7 @@ def get_data(args):
 
     elif args.dataset_path == "CIFAR10":
         transforms = torchvision.transforms.Compose([
-            torchvision.transforms.Resize(80),  # args.image_size + 1/4 *args.image_size
+            torchvision.transforms.Resize((64,64)),  # args.image_size + 1/4 *args.image_size
             torchvision.transforms.RandomResizedCrop(args.image_size, scale=(0.8, 1.0)),
             torchvision.transforms.ToTensor(),
             torchvision.transforms.Normalize((0.5, 0.5, 0.5), (0.5, 0.5, 0.5))])
@@ -43,8 +43,9 @@ def get_data(args):
 
     elif args.dataset_path == "landscape_img_folder":
         transforms = torchvision.transforms.Compose([
-            torchvision.transforms.Resize(80),  # args.image_size + 1/4 *args.image_size
-            torchvision.transforms.RandomResizedCrop(args.image_size, scale=(0.8, 1.0)),
+            torchvision.transforms.Resize((128,128)),
+            # torchvision.transforms.Resize(80),  # args.image_size + 1/4 *args.image_size
+            # torchvision.transforms.RandomResizedCrop(args.image_size, scale=(0.8, 1.0)),
             torchvision.transforms.ToTensor(),
             torchvision.transforms.Normalize((0.5, 0.5, 0.5), (0.5, 0.5, 0.5))])
         dataset = torchvision.datasets.ImageFolder(args.dataset_path, transform=transforms)

@@ -14,7 +14,10 @@
 
 module load cuda/11.1
 
-source /work3/s204148/DL02456_DDPM/venv3/bin/activate
+source venv3/bin/activate
 
-python /work3/s204148/DL02456_DDPM/DDPM.py --dataset_path landscape_img_folder --run_name "landscape_run"
+python DDPM.py --dataset_path "CIFAR10" --run_name "cifar10_run"
+
+
+
 

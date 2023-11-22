@@ -8,7 +8,7 @@ from matplotlib import pyplot as plt
 from tqdm import tqdm
 from torch import optim
 from utils import *
-from modules import UNet
+from modules_high_res import UNet
 from torch.utils.tensorboard import SummaryWriter
 import argparse
 import wandb
@@ -96,35 +96,32 @@ def train(args):
         wandb.log({"Training Loss": loss.item()})
         wandb.log({"Sampled Images": [wandb.Image(img) for img in sampled_images]})
 
-        if (epoch%10)==0:
-
-            for i in range(10):
-                sampled_images_for_fid = diffusion.sampling(model, num_img=1)
-                path_to_sampled_images = os.path.join("results", f"sampled_images_cifar_fid/{i}.jpg")
-                save_images(sampled_images_for_fid, path_to_sampled_images)
-
-            # Specify path to real images
-            # path_to_sampled_images = os.path.join("results", f"sampled_images_fid")
-            # path_to_real_images = "results/mnist_images_scaled"
-
-            path_to_sampled_images = os.path.join("results", f"sampled_images_cifar_fid")
-            path_to_real_images = "results/cifar10_images_scaled"
-
-            # Calculate FID score
-            fid_value = fid_score.calculate_fid_given_paths([path_to_sampled_images, path_to_real_images],
-                                                            batch_size=1, device=device, dims=2048)
-
-            wandb.log({"FID": fid_value, "epoch": epoch})
+        # if (epoch%10)==0:
+        #
+        #     for i in range(10):
+        #         sampled_images_for_fid = diffusion.sampling(model, num_img=1)
+        #         path_to_sampled_images = os.path.join("results", f"sampled_images_fid/{i}.jpg")
+        #         save_images(sampled_images_for_fid, path_to_sampled_images)
+        #
+        #     # Specify path to real images
+        #     path_to_sampled_images = os.path.join("results", f"sampled_images_fid")
+        #     path_to_real_images = "results/mnist_images_scaled"
+        #
+        #     # Calculate FID score
+        #     fid_value = fid_score.calculate_fid_given_paths([path_to_sampled_images, path_to_real_images],
+        #                                                     batch_size=1, device=device, dims=2048)
+        #
+        #     wandb.log({"FID": fid_value})
 
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
-    parser.add_argument("--dataset_path", type=str, default="CIFAR10", help="give dataset path here")
-    parser.add_argument("--run_name", type=str, default="cifar10", help="give run name here to wandb")
+    parser.add_argument("--dataset_path", type=str, default="landscape_img_folder", help="give dataset path here")
+    parser.add_argument("--run_name", type=str, default="landscape_run_high_res", help="give run name here to wandb")
     parser.add_argument("--batch_size", type=int, default=12, help="batchsize")
     parser.add_argument("--epochs", type=int, default=500, help="epoch size here")
     parser.add_argument("--lr", type=float, default=3e-4, help="learning rate")
-    parser.add_argument("--T", type=int, default=1000, help="Timestep")
+    parser.add_argument("--T", type=int, default=10, help="Timestep") # JHUSK AT ÆNDRE DET TILBAGE
     parser.add_argument("--device", type=str, default="cuda", help="device")
 
     args = parser.parse_args()
@@ -136,8 +133,8 @@ if __name__ == '__main__':
         args.img_shape = (3, 64, 64)
         args.image_size = 64  # landscape fix
     elif args.dataset_path == "landscape_img_folder":
-        args.img_shape = (3, 64, 64)
-        args.image_size = 64  # landscape fix
+        args.img_shape = (3, 128, 128)
+        args.image_size = 128 # landscape fix
     else:
         raise AssertionError("UNKNOWN DATASET!!!!")
 
@@ -148,7 +145,7 @@ if __name__ == '__main__':
     if not os.path.exists(f"results/{args.run_name}"):
         os.mkdir(f"results/{args.run_name}")
 
-    wandb.init(project="DDPM_Project", name=args.run_name)#, mode="disabled")
+    wandb.init(project="DDPM_Project", name=args.run_name, mode="disabled")
     wandb.config.epochs = args.epochs
     wandb.config.batch_size = args.batch_size
     wandb.config.lr = args.lr
