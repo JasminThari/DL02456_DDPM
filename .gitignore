@@ -11,3 +11,4 @@ results/Unconditional_DDPM_Train*
 /MNIST/
 *results*
 *wandb*
+*real_images*

@@ -98,21 +98,21 @@ def train(args):
 
         if (epoch%10)==0:
 
-            for i in range(10):
+            for i in range(64):
                 sampled_images_for_fid = diffusion.sampling(model, num_img=1)
-                path_to_sampled_images = os.path.join("results", f"sampled_images_cifar_fid/{i}.jpg")
+                path_to_sampled_images = os.path.join("results", f"generated_images/{epoch}_{i}.jpg")
                 save_images(sampled_images_for_fid, path_to_sampled_images)
 
             # Specify path to real images
-            # path_to_sampled_images = os.path.join("results", f"sampled_images_fid")
-            # path_to_real_images = "results/mnist_images_scaled"
+            path_to_sampled_images = os.path.join("results", f"sampled_images_fid")
+            path_to_real_images = "results/mnist_images_scaled"
 
-            path_to_sampled_images = os.path.join("results", f"sampled_images_cifar_fid")
-            path_to_real_images = "results/cifar10_images_scaled"
+            # path_to_sampled_images = os.path.join("results", f"sampled_images_cifar_fid")
+            # path_to_real_images = "results/cifar10_images_scaled"
 
             # Calculate FID score
             fid_value = fid_score.calculate_fid_given_paths([path_to_sampled_images, path_to_real_images],
-                                                            batch_size=1, device=device, dims=2048)
+                                                            batch_size=1, device=device, dims=64)
 
             wandb.log({"FID": fid_value, "epoch": epoch})
 

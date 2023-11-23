@@ -125,7 +125,7 @@ class Up(nn.Module):
 
 
 class UNet(nn.Module):
-    def __init__(self, c_in=3, c_out=3, img_dim=64, num_max_pools=4, initial_feature_maps=64, time_dim=256,
+    def __init__(self, c_in=3, c_out=3, img_dim=64, num_max_pools=3, initial_feature_maps=64, time_dim=256,
                  device="cuda"):
         # num_max_pools is the number of times we downsample the image
         # make an reasionable assumption about the size of the image and choose num_max_pools accordingly

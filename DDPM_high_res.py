@@ -16,6 +16,7 @@ from pytorch_fid import fid_score
 from torchvision.models import inception_v3
 from scipy.stats import entropy
 from tqdm import tqdm
+from datetime import datetime as dt
 
 wandb.login(key="cc9eaf6580b2ef9ef475fc59ba669b2de0800b92")
 
@@ -69,7 +70,7 @@ class DiffusionProcess:
 def train(args):
     device = args.device
     dataloader = get_data(args)
-    model = UNet(c_in=3,c_out=3,img_dim=128,initial_feature_maps=16).to(device)
+    model = UNet(c_in=args.img_shape[0] ,c_out=args.img_shape[0],img_dim=args.img_shape[1],initial_feature_maps=64,num_max_pools=2).to(device)
     optimizer = optim.AdamW(model.parameters(), lr=args.lr)
     mse = nn.MSELoss()
     diffusion = DiffusionProcess(**vars(args))
@@ -96,30 +97,54 @@ def train(args):
         wandb.log({"Training Loss": loss.item()})
         wandb.log({"Sampled Images": [wandb.Image(img) for img in sampled_images]})
 
+        if (epoch%10)==0:
+
+            for i in range(64):
+
+                
+                sampled_images = diffusion.sampling(model, num_img=1)
+
+                folder_path_to_sampled_images = f"results/{args.run_name}/{epoch}"
+                if not os.path.exists(folder_path_to_sampled_images):
+                    os.mkdir(folder_path_to_sampled_images)
+
+                path_to_sampled_images = os.path.join(folder_path_to_sampled_images, f"{i}.jpg")
+                save_images(sampled_images, path_to_sampled_images)
+
+            # Calculate FID score
+            fid_value = fid_score.calculate_fid_given_paths([folder_path_to_sampled_images, args.path_to_real_images],
+                                                            batch_size=1, device=device, dims=64)
+
+            wandb.log({"FID": fid_value, "epoch": epoch})
 
 
 
+date = dt.now()
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
-    parser.add_argument("--dataset_path", type=str, default="landscape_img_folder", help="give dataset path here")
-    parser.add_argument("--run_name", type=str, default="landscape_run_high_res", help="give run name here to wandb")
-    parser.add_argument("--batch_size", type=int, default=1, help="batchsize")
+    parser.add_argument("--dataset_path", type=str, default="CIFAR10", help="give dataset path here")
+    parser.add_argument("--run_name", type=str, default=f"CIFAR10_{date}", help="give run name here to wandb")
+    parser.add_argument("--batch_size", type=int, default=12, help="batchsize")
     parser.add_argument("--epochs", type=int, default=150, help="epoch size here")
     parser.add_argument("--lr", type=float, default=3e-4, help="learning rate")
-    parser.add_argument("--T", type=int, default=1000, help="Timestep") # JHUSK AT ÆNDRE DET TILBAGE
+    parser.add_argument("--T", type=int, default=1000, help="Timestep") 
     parser.add_argument("--device", type=str, default="cuda", help="device")
+
+
 
     args = parser.parse_args()
 
     if args.dataset_path == "MNIST":
-        args.img_shape = (3, 64,64)
-        args.image_size = 64  # landscape fix
+        args.img_shape = (1, 28,28)
+        args.image_size = 28  
+        args.path_to_real_images =  "real_images/MNIST_real_images"
     elif args.dataset_path == "CIFAR10":
-        args.img_shape = (3, 64, 64)
-        args.image_size = 64  # landscape fix
+        args.img_shape = (3, 32, 32)
+        args.image_size = 32  
+        args.path_to_real_images =  "real_images/CIFAR10_real_images"
     elif args.dataset_path == "landscape_img_folder":
         args.img_shape = (3, 128, 128)
-        args.image_size = 128 # landscape fix
+        args.image_size = 128 
     else:
         raise AssertionError("UNKNOWN DATASET!!!!")
 

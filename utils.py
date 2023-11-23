@@ -26,10 +26,10 @@ def get_data(args):
 
     if args.dataset_path == "MNIST":
         transforms = torchvision.transforms.Compose([
-            torchvision.transforms.Grayscale(num_output_channels=3),
-            torchvision.transforms.Resize((64,64)),
+            # torchvision.transforms.Grayscale(num_output_channels=3),
+            # torchvision.transforms.Resize((64,64)),
             torchvision.transforms.ToTensor(),
-            torchvision.transforms.Normalize((0.5,0.5,0.5), (0.5,0.5,0.5))])
+            torchvision.transforms.Normalize((0.5,), (0.5,))])
         dataset = torchvision.datasets.MNIST(root="MNIST", download=True, train=True, transform=transforms)
 
 

@@ -16,7 +16,7 @@ module load cuda/11.1
 
 source venv3/bin/activate
 
-python DDPM.py --dataset_path "CIFAR10" --run_name "cifar10_run"
+python DDPM_high_res.py --dataset_path "MNIST" --run_name "MNIST_2_23_11"
 
 
 
