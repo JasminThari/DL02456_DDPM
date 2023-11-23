@@ -122,7 +122,7 @@ if __name__ == '__main__':
     parser.add_argument("--dataset_path", type=str, default="CIFAR10", help="give dataset path here")
     parser.add_argument("--run_name", type=str, default="cifar10", help="give run name here to wandb")
     parser.add_argument("--batch_size", type=int, default=12, help="batchsize")
-    parser.add_argument("--epochs", type=int, default=500, help="epoch size here")
+    parser.add_argument("--epochs", type=int, default=200, help="epoch size here")
     parser.add_argument("--lr", type=float, default=3e-4, help="learning rate")
     parser.add_argument("--T", type=int, default=1000, help="Timestep")
     parser.add_argument("--device", type=str, default="cuda", help="device")

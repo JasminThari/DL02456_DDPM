@@ -1,4 +1,3 @@
-
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
@@ -103,13 +102,11 @@ class Up(nn.Module):
     def __init__(self, in_channels, out_channels, emb_dim=256):
         super().__init__()
 
-        # Upsampling followed by 1x1 convolution to reduce channel size
-        self.up = nn.Sequential(
-            nn.Upsample(scale_factor=2, mode="bilinear", align_corners=True),
-            nn.Conv2d(in_channels, in_channels // 2, kernel_size=1)
+        self.up = nn.Upsample(scale_factor=2, mode="bilinear", align_corners=True)
+        self.conv = nn.Sequential(
+            DoubleConv(in_channels, in_channels, residual=True),
+            DoubleConv(in_channels, out_channels, in_channels // 2),
         )
-        self.conv = DoubleConv(in_channels, out_channels)
-
 
         self.emb_layer = nn.Sequential(
             nn.SiLU(),
@@ -128,35 +125,71 @@ class Up(nn.Module):
 
 
 class UNet(nn.Module):
-    def __init__(self, c_in=3, c_out=3, time_dim=256, device="cuda"):
+    def __init__(self, c_in=3, c_out=3, img_dim=64, num_max_pools=4, initial_feature_maps=64, time_dim=256,
+                 device="cuda"):
+        # num_max_pools is the number of times we downsample the image
+        # make an reasionable assumption about the size of the image and choose num_max_pools accordingly
+        # as an example an 64 x 64 image would go from 64 -> 32 -> 16 -> 8 with 3 max pools
+        # larger images would presumably need more max pools
+
+        # check that the image is divisible by 2^num_max_pools
+        assert img_dim % (2 ** num_max_pools) == 0, "Image size not divisible by 2^num_max_pools"
+
         super().__init__()
         self.device = device
         self.time_dim = time_dim
-        self.inc = DoubleConv(c_in, 64)
-        self.down1 = Down(64, 128)
-        self.down2 = Down(128, 256)
-        self.down3 = Down(256, 512)  # New layer for additional downscaling
-        self.down4 = Down(512, 512)  # New layer for additional downscaling
+        self.img_dim = img_dim  # the width and height of the image (assuming square)
+        self.num_max_pools = num_max_pools  # the number of times we downsample the image
+        self.initial_feature_maps = initial_feature_maps  # was 64 but can be changed. Is doubled each time we downsample
+        self.channels_into_bottleneck = initial_feature_maps * (
+                    2 ** (self.num_max_pools - 1))  # the number of channels going into the bottleneck
 
-        # Self-Attention layers
-        self.sa1 = SelfAttention(128, 64)
-        self.sa2 = SelfAttention(256, 32)
-        self.sa3 = SelfAttention(512, 16)
-        self.sa4 = SelfAttention(512, 8)
+        # Encoder
+        self.encoder = self.make_encoder(c_in)
 
-        self.bot = DoubleConv(512, 1024)  # Bottleneck layer
+        # Bottleneck
+        self.bottle = nn.Sequential(
+            DoubleConv(self.channels_into_bottleneck, 2 * self.channels_into_bottleneck),
+            DoubleConv(2 * self.channels_into_bottleneck, 2 * self.channels_into_bottleneck),
+            DoubleConv(2 * self.channels_into_bottleneck, self.channels_into_bottleneck))
 
-        self.up1 = Up(1024, 512)
-        self.up2 = Up(1024, 256)
-        self.up3 = Up(512, 128)
-        self.up4 = Up(256, 64)  # New layer for additional upscaling
+        # Decoder
+        self.decoder = self.make_decoder(c_out)
 
-        self.outc = nn.Conv2d(64, c_out, kernel_size=1)
+    def make_encoder(self, c_in):
+        encoder = nn.ModuleList()
+        # add first double conv layer
+        encoder.append(DoubleConv(c_in, self.initial_feature_maps))
+        # add the rest of the layers except the last one
+        for i in range(1, self.num_max_pools, 1):
+            encoder.append(Down(self.initial_feature_maps * (2 ** (i - 1)), self.initial_feature_maps * (2 ** i)))
+            encoder.append(SelfAttention(self.initial_feature_maps * (2 ** i), self.img_dim // (2 ** (i))))
+
+        # last layer is different, here the number of channels is not doubled when we downsample
+        encoder.append(Down(self.initial_feature_maps * (2 ** i), self.initial_feature_maps * (2 ** i)))
+        encoder.append(SelfAttention(self.initial_feature_maps * (2 ** i), self.img_dim // (2 ** (i + 1))))
+
+        return encoder
+
+    def make_decoder(self, c_out):
+        decoder = nn.ModuleList()
+        # add the layers
+        # loop backwards
+        for i in range(self.num_max_pools, 1, -1):
+            decoder.append(Up(self.initial_feature_maps * (2 ** i), self.initial_feature_maps * (2 ** (i - 2))))
+            decoder.append(SelfAttention(self.initial_feature_maps * (2 ** (i - 2)), self.img_dim // (2 ** (i - 1))))
+
+        # add the second last layer
+        decoder.append(Up(self.initial_feature_maps * 2, self.initial_feature_maps))
+        decoder.append(SelfAttention(self.initial_feature_maps, self.img_dim))
+        # finally add the last layey which is a double conv layer
+        decoder.append(nn.Conv2d(self.initial_feature_maps, c_out, kernel_size=1))
+        return decoder
 
     def pos_encoding(self, t, channels):
         inv_freq = 1.0 / (
-            10000
-            ** (torch.arange(0, channels, 2, device=self.device).float() / channels)
+                10000
+                ** (torch.arange(0, channels, 2, device=self.device).float() / channels)
         )
         pos_enc_a = torch.sin(t.repeat(1, channels // 2) * inv_freq)
         pos_enc_b = torch.cos(t.repeat(1, channels // 2) * inv_freq)
@@ -167,101 +200,43 @@ class UNet(nn.Module):
         t = t.unsqueeze(-1).type(torch.float)
         t = self.pos_encoding(t, self.time_dim)
 
-        x1 = self.inc(x)
-        x2 = self.down1(x1, t)
-        x2 = self.sa1(x2)
-        x3 = self.down2(x2, t)
-        x3 = self.sa2(x3)
-        x4 = self.down3(x3, t)
-        x4 = self.sa3(x4)
-        x5 = self.down4(x4, t)
-        x5 = self.sa4(x5)
+        skips = []
+        # go through the encoder
+        for idx, layer in enumerate(self.encoder):
+            if isinstance(layer, DoubleConv):
+                x = layer(x)
+                skips.append(x)
+            elif isinstance(layer, Down):
+                x = layer(x, t)
+            elif isinstance(layer, SelfAttention):
+                x = layer(x)
+                if idx != len(self.encoder) - 1:
+                    skips.append(x)
 
-        # Bottleneck
-        x = self.bot(x5)
+        # go through the bottleneck
+        x = self.bottle(x)
 
-        # Upsampling path
-        x = self.up1(x, x5, t)
-        x = self.up2(x, x4, t)
-        x = self.up3(x, x3, t)
-        x = self.up4(x, x2, t)
+        # go through the decoder
+        for layer in self.decoder:
+            if isinstance(layer, Up):
+                x = layer(x, skips.pop(), t)
+            elif isinstance(layer, SelfAttention):
+                x = layer(x)
+            elif isinstance(layer, nn.Conv2d):
+                x = layer(x)
 
-        output = self.outc(x)
-        return output
-
-
-class UNet_conditional(nn.Module):
-    def __init__(self, c_in=3, c_out=3, time_dim=256, num_classes=None, device="cuda"):
-        super().__init__()
-        self.device = device
-        self.time_dim = time_dim
-        self.inc = DoubleConv(c_in, 64)
-        self.down1 = Down(64, 128)
-        self.sa1 = SelfAttention(128, 32)
-        self.down2 = Down(128, 256)
-        self.sa2 = SelfAttention(256, 16)
-        self.down3 = Down(256, 256)
-        self.sa3 = SelfAttention(256, 8)
-
-        self.bot1 = DoubleConv(256, 512)
-        self.bot2 = DoubleConv(512, 512)
-        self.bot3 = DoubleConv(512, 256)
-
-        self.up1 = Up(512, 128)
-        self.sa4 = SelfAttention(128, 16)
-        self.up2 = Up(256, 64)
-        self.sa5 = SelfAttention(64, 32)
-        self.up3 = Up(128, 64)
-        self.sa6 = SelfAttention(64, 64)
-        self.outc = nn.Conv2d(64, c_out, kernel_size=1)
-
-        if num_classes is not None:
-            self.label_emb = nn.Embedding(num_classes, time_dim)
-
-    def pos_encoding(self, t, channels):
-        inv_freq = 1.0 / (
-            10000
-            ** (torch.arange(0, channels, 2, device=self.device).float() / channels)
-        )
-        pos_enc_a = torch.sin(t.repeat(1, channels // 2) * inv_freq)
-        pos_enc_b = torch.cos(t.repeat(1, channels // 2) * inv_freq)
-        pos_enc = torch.cat([pos_enc_a, pos_enc_b], dim=-1)
-        return pos_enc
-
-    def forward(self, x, t, y):
-        t = t.unsqueeze(-1).type(torch.float)
-        t = self.pos_encoding(t, self.time_dim)
-
-        if y is not None:
-            t += self.label_emb(y)
-
-        x1 = self.inc(x)
-        x2 = self.down1(x1, t)
-        x2 = self.sa1(x2)
-        x3 = self.down2(x2, t)
-        x3 = self.sa2(x3)
-        x4 = self.down3(x3, t)
-        x4 = self.sa3(x4)
-
-        x4 = self.bot1(x4)
-        x4 = self.bot2(x4)
-        x4 = self.bot3(x4)
-
-        x = self.up1(x4, x3, t)
-        x = self.sa4(x)
-        x = self.up2(x, x2, t)
-        x = self.sa5(x)
-        x = self.up3(x, x1, t)
-        x = self.sa6(x)
-        output = self.outc(x)
-        return output
+        return x
 
 
 if __name__ == '__main__':
-    # net = UNet(device="cpu")
-    net = UNet_conditional(num_classes=10, device="cpu")
-    print(sum([p.numel() for p in net.parameters()]))
-    x = torch.randn(3, 3, 64, 64)
-    t = x.new_tensor([500] * x.shape[0]).long()
-    y = x.new_tensor([1] * x.shape[0]).long()
-    print(net(x, t, y).shape)
+    batch_size = 2
+    img_channels = 3
+    img_dim = 64
+    num_max_pools = 3  # 3 is fitting for images of 64x64,but for 28x28 we can only do 2.
+    x_org = torch.randn(batch_size, img_channels, img_dim, img_dim)
+    timesteps = torch.randint(0, 500, (batch_size,))
+    # create the uNet
+    net = UNet(c_in=img_channels, c_out=img_channels, img_dim=img_dim, num_max_pools=num_max_pools,device="cpu")  # remember to set both in and out channels to 1 when MNIST
+    x_new = net(x_org, timesteps)
+
+

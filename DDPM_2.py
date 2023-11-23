@@ -15,6 +15,7 @@ import wandb
 from pytorch_fid import fid_score
 from torchvision.models import inception_v3
 from scipy.stats import entropy
+from tqdm import tqdm
 
 wandb.login(key="cc9eaf6580b2ef9ef475fc59ba669b2de0800b92")
 
@@ -68,7 +69,7 @@ class DiffusionProcess:
 def train(args):
     device = args.device
     dataloader = get_data(args)
-    model = UNet(c_in=3,c_out=3).to(device)
+    model = UNet(c_in=3,c_out=3,img_dim=128,initial_feature_maps=16).to(device)
     optimizer = optim.AdamW(model.parameters(), lr=args.lr)
     mse = nn.MSELoss()
     diffusion = DiffusionProcess(**vars(args))
@@ -76,9 +77,8 @@ def train(args):
 
 
 
-    for epoch in range(args.epochs):
-        print(epoch)
-        for img_batch, _ in dataloader:
+    for epoch in tqdm(range(args.epochs), desc='Epochs'):
+        for img_batch, _ in tqdm(dataloader, desc='Batches', leave=False):
             img_batch = img_batch.to(device)
             random_timestep = torch.randint(low=1, high=args.T, size=(img_batch.shape[0],)).to(device)
             noisy_image, noise = diffusion.noising(img_batch, random_timestep)
@@ -96,32 +96,17 @@ def train(args):
         wandb.log({"Training Loss": loss.item()})
         wandb.log({"Sampled Images": [wandb.Image(img) for img in sampled_images]})
 
-        # if (epoch%10)==0:
-        #
-        #     for i in range(10):
-        #         sampled_images_for_fid = diffusion.sampling(model, num_img=1)
-        #         path_to_sampled_images = os.path.join("results", f"sampled_images_fid/{i}.jpg")
-        #         save_images(sampled_images_for_fid, path_to_sampled_images)
-        #
-        #     # Specify path to real images
-        #     path_to_sampled_images = os.path.join("results", f"sampled_images_fid")
-        #     path_to_real_images = "results/mnist_images_scaled"
-        #
-        #     # Calculate FID score
-        #     fid_value = fid_score.calculate_fid_given_paths([path_to_sampled_images, path_to_real_images],
-        #                                                     batch_size=1, device=device, dims=2048)
-        #
-        #     wandb.log({"FID": fid_value})
+
 
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument("--dataset_path", type=str, default="landscape_img_folder", help="give dataset path here")
     parser.add_argument("--run_name", type=str, default="landscape_run_high_res", help="give run name here to wandb")
-    parser.add_argument("--batch_size", type=int, default=12, help="batchsize")
-    parser.add_argument("--epochs", type=int, default=500, help="epoch size here")
+    parser.add_argument("--batch_size", type=int, default=1, help="batchsize")
+    parser.add_argument("--epochs", type=int, default=150, help="epoch size here")
     parser.add_argument("--lr", type=float, default=3e-4, help="learning rate")
-    parser.add_argument("--T", type=int, default=10, help="Timestep") # JHUSK AT ÆNDRE DET TILBAGE
+    parser.add_argument("--T", type=int, default=1000, help="Timestep") # JHUSK AT ÆNDRE DET TILBAGE
     parser.add_argument("--device", type=str, default="cuda", help="device")
 
     args = parser.parse_args()
@@ -145,7 +130,21 @@ if __name__ == '__main__':
     if not os.path.exists(f"results/{args.run_name}"):
         os.mkdir(f"results/{args.run_name}")
 
-    wandb.init(project="DDPM_Project", name=args.run_name, mode="disabled")
+    import logging
+    # Initialize the logger
+    logging.basicConfig(level=logging.INFO)
+
+    # Log GPU information
+    if torch.cuda.is_available():
+        device = torch.cuda.current_device()
+        gpu_name = torch.cuda.get_device_name(device)
+        gpu_memory = torch.cuda.get_device_properties(device).total_memory / (1024 ** 2)  # Convert to megabytes
+        logging.info(f'Using GPU: {gpu_name}')
+        logging.info(f'GPU Memory: {gpu_memory:.2f} MB')
+    else:
+        logging.info('No GPU available, using CPU.')
+
+    wandb.init(project="DDPM_Project", name=args.run_name)#, mode="disabled")
     wandb.config.epochs = args.epochs
     wandb.config.batch_size = args.batch_size
     wandb.config.lr = args.lr
