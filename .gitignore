@@ -12,3 +12,4 @@ results/Unconditional_DDPM_Train*
 *results*
 *wandb*
 *real_images*
+*FID_Final_calculation*

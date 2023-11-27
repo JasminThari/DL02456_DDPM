@@ -69,10 +69,17 @@ class DiffusionProcess:
 
 
 if __name__ == '__main__':
-    # launch()
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--dataset_path", type=str, default="CIFAR10", help="give dataset path here")
+    parser.add_argument("--sampled_path", type=str, default="CIFAR10", help="give dataset path here")
+    parser.add_argument("--model_name", type=str, default="CIFAR10_1_23_11", help="give model name here")
+    parser.add_argument("--device", type=str, default="cuda", help="device")
+
+    args = parser.parse_args()
+
     device = "cuda"
     model = UNet(c_in=3, c_out=3,img_dim=32,initial_feature_maps=64,num_max_pools=2).to(device)
-    ckpt = torch.load("models/CIFAR10_1_23_11/ckpt.pt")
+    ckpt = torch.load(f"models/{args.model_name}/ckpt.pt")
     model.load_state_dict(ckpt)
     diffusion = DiffusionProcess(img_shape=(3,32,32), img_size=32, device=device)
     x = diffusion.sampling(model, num_img= 8)
@@ -86,8 +93,8 @@ if __name__ == '__main__':
 
 
         sampled_images = diffusion.sampling(model, num_img=1)
-        folder_path_real_images = f"real_images/CIFAR10_all_train_images"
-        folder_path_to_sampled_images = f"FID_Final_calculation/CIFAR10"
+        folder_path_real_images = f"real_images/{args.dataset_path}"
+        folder_path_to_sampled_images = f"FID_Final_calculation/{args.sampled_path}"
         if not os.path.exists(folder_path_to_sampled_images):
             os.mkdir(folder_path_to_sampled_images)
 
