@@ -69,8 +69,8 @@ class DiffusionProcess:
 
 def train(args):
     device = args.device
-    dataloader = get_data(args)
-    model = UNet(c_in=args.img_shape[0] ,c_out=args.img_shape[0],img_dim=args.img_shape[1],initial_feature_maps=64,num_max_pools=2).to(device)
+    dataloader = get_data(args)    
+    model = UNet(c_in=args.img_shape[0] ,c_out=args.img_shape[0],img_dim=args.img_shape[1],initial_feature_maps=64,num_max_pools=args.maxpools).to(device)
     optimizer = optim.AdamW(model.parameters(), lr=args.lr)
     mse = nn.MSELoss()
     diffusion = DiffusionProcess(**vars(args))
@@ -97,25 +97,27 @@ def train(args):
         wandb.log({"Training Loss": loss.item()})
         wandb.log({"Sampled Images": [wandb.Image(img) for img in sampled_images]})
 
-        if (epoch%10)==0:
-
-            for i in range(64):
-
+        if args.sample:
+            print("I am here")
+            if (epoch%10)==0:
                 
-                sampled_images = diffusion.sampling(model, num_img=1)
+                for i in range(64):
 
-                folder_path_to_sampled_images = f"results/{args.run_name}/{epoch}"
-                if not os.path.exists(folder_path_to_sampled_images):
-                    os.mkdir(folder_path_to_sampled_images)
+                    
+                    sampled_images = diffusion.sampling(model, num_img=1)
 
-                path_to_sampled_images = os.path.join(folder_path_to_sampled_images, f"{i}.jpg")
-                save_images(sampled_images, path_to_sampled_images)
+                    folder_path_to_sampled_images = f"results/{args.run_name}/{epoch}"
+                    if not os.path.exists(folder_path_to_sampled_images):
+                        os.mkdir(folder_path_to_sampled_images)
 
-            # Calculate FID score
-            fid_value = fid_score.calculate_fid_given_paths([folder_path_to_sampled_images, args.path_to_real_images],
-                                                            batch_size=1, device=device, dims=64)
+                    path_to_sampled_images = os.path.join(folder_path_to_sampled_images, f"{i}.jpg")
+                    save_images(sampled_images, path_to_sampled_images)
 
-            wandb.log({"FID": fid_value, "epoch": epoch})
+                # Calculate FID score
+                fid_value = fid_score.calculate_fid_given_paths([folder_path_to_sampled_images, args.path_to_real_images],
+                                                                batch_size=1, device=device, dims=64)
+
+                wandb.log({"FID": fid_value, "epoch": epoch})
 
 
 
@@ -129,6 +131,9 @@ if __name__ == '__main__':
     parser.add_argument("--lr", type=float, default=3e-4, help="learning rate")
     parser.add_argument("--T", type=int, default=1000, help="Timestep") 
     parser.add_argument("--device", type=str, default="cuda", help="device")
+    parser.add_argument("--maxpools",type=int,default=3,help="give number of maxpool in the UNET")
+    parser.add_argument("--sample",type=int,default=1,help="Whether to sample and calculate FID during training. 1 is true and 0 is false")
+
 
 
 
