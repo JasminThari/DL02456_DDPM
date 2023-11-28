@@ -1,0 +1,24 @@
+#!/bin/sh
+#BSUB -J DDPM_Training
+#BSUB -o Logs/Training_Logs_%J.out
+#BSUB -e Logs/Errors_Logs_%J.err
+#BSUB -q gpua100
+#BSUB -R "select[gpu80gb]"
+#BSUB -gpu "num=1:mode=exclusive_process"
+#BSUB -n 16
+#BSUB -R "span[hosts=1]"
+#BSUB -R "rusage[mem=5G]"
+#BSUB -W 23:30
+#BSUB -N 
+#BSUB 
+# end of BSUB options
+
+module load cuda/11.1
+
+source venv3/bin/activate
+
+python DDPM_2.py --dataset_path "landscape_img_folder" --run_name "high_res_landscape_run"
+
+
+
+

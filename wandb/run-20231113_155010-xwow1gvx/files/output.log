@@ -1,0 +1,26 @@
+
+0
+Traceback (most recent call last):
+  File "DDPM.py", line 140, in <module>
+    train(args)
+  File "DDPM.py", line 82, in train
+    for img_batch, _ in dataloader:
+  File "/work3/s204148/DL02456_DDPM/venv3/lib/python3.8/site-packages/torch/utils/data/dataloader.py", line 530, in __next__
+    data = self._next_data()
+  File "/work3/s204148/DL02456_DDPM/venv3/lib/python3.8/site-packages/torch/utils/data/dataloader.py", line 570, in _next_data
+    data = self._dataset_fetcher.fetch(index)  # may raise StopIteration
+  File "/work3/s204148/DL02456_DDPM/venv3/lib/python3.8/site-packages/torch/utils/data/_utils/fetch.py", line 49, in fetch
+    data = [self.dataset[idx] for idx in possibly_batched_index]
+  File "/work3/s204148/DL02456_DDPM/venv3/lib/python3.8/site-packages/torch/utils/data/_utils/fetch.py", line 49, in <listcomp>
+    data = [self.dataset[idx] for idx in possibly_batched_index]
+  File "/work3/s204148/DL02456_DDPM/venv3/lib/python3.8/site-packages/torchvision/datasets/folder.py", line 230, in __getitem__
+    sample = self.loader(path)
+  File "/work3/s204148/DL02456_DDPM/venv3/lib/python3.8/site-packages/torchvision/datasets/folder.py", line 269, in default_loader
+    return pil_loader(path)
+  File "/work3/s204148/DL02456_DDPM/venv3/lib/python3.8/site-packages/torchvision/datasets/folder.py", line 249, in pil_loader
+    return img.convert("RGB")
+  File "/work3/s204148/DL02456_DDPM/venv3/lib/python3.8/site-packages/PIL/Image.py", line 916, in convert
+    self.load()
+  File "/work3/s204148/DL02456_DDPM/venv3/lib/python3.8/site-packages/PIL/ImageFile.py", line 269, in load
+    n, err_code = decoder.decode(b)
+KeyboardInterrupt

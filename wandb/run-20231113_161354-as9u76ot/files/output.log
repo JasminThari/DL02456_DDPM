@@ -1,0 +1,19 @@
+
+0
+Traceback (most recent call last):
+  File "/zhome/61/c/156510/Downloads/pycharm-2022.3.3/plugins/python/helpers/pydev/pydevd.py", line 1496, in _exec
+    pydev_imports.execfile(file, globals, locals)  # execute the script
+  File "/zhome/61/c/156510/Downloads/pycharm-2022.3.3/plugins/python/helpers/pydev/_pydev_imps/_pydev_execfile.py", line 18, in execfile
+    exec(compile(contents+"\n", file, 'exec'), glob, loc)
+  File "/work3/s204148/DL02456_DDPM/DDPM.py", line 128, in <module>
+    train(args)
+  File "/work3/s204148/DL02456_DDPM/DDPM.py", line 79, in train
+    predicted_noise = model(noisy_image, random_timestep).to(device)
+  File "/work3/s204148/DL02456_DDPM/venv3/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1110, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/work3/s204148/DL02456_DDPM/modules.py", line 169, in forward
+    x2 = self.sa1(x2)
+  File "/work3/s204148/DL02456_DDPM/venv3/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1110, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/work3/s204148/DL02456_DDPM/modules.py", line 50, in forward
+    x = x.view(-1, self.channels, self.size * self.size).swapaxes(1, 2)

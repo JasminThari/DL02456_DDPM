@@ -7,3 +7,9 @@ models
 results
 Logs
 results/Unconditional_DDPM_Train*
+/CIFAR10/
+/MNIST/
+*results*
+*wandb*
+*real_images*
+*FID_Final_calculation*

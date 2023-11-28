@@ -1,0 +1,6 @@
+Traceback (most recent call last):
+  File "/work3/s204148/DL02456_DDPM/DDPM.py", line 188, in <module>
+    train(args)
+  File "/work3/s204148/DL02456_DDPM/DDPM.py", line 120, in train
+    dataloader = get_data(args)
+  File "/work3/s204148/DL02456_DDPM/utils.py", line 55, in get_data

@@ -1,0 +1,15 @@
+
+0
+Traceback (most recent call last):
+  File "/zhome/61/c/156510/Downloads/pycharm-2022.3.3/plugins/python/helpers/pydev/pydevd.py", line 1496, in _exec
+    pydev_imports.execfile(file, globals, locals)  # execute the script
+  File "/zhome/61/c/156510/Downloads/pycharm-2022.3.3/plugins/python/helpers/pydev/_pydev_imps/_pydev_execfile.py", line 18, in execfile
+    exec(compile(contents+"\n", file, 'exec'), glob, loc)
+  File "/work3/s204148/DL02456_DDPM/DDPM.py", line 186, in <module>
+    train(args)
+  File "/work3/s204148/DL02456_DDPM/DDPM.py", line 141, in train
+    save_images(sampled_images, os.path.join("results", args.run_name, f"{epoch}.jpg"))
+  File "/work3/s204148/DL02456_DDPM/utils.py", line 23, in save_images
+    im.save(path)
+  File "/work3/s204148/DL02456_DDPM/venv3/lib/python3.8/site-packages/PIL/Image.py", line 2435, in save
+    fp = builtins.open(filename, "w+b")

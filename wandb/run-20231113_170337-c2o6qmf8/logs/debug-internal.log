@@ -1,0 +1,82 @@
+2023-11-13 17:03:37,551 INFO    StreamThr :27418 [internal.py:wandb_internal():86] W&B internal server running at pid: 27418, started at: 2023-11-13 17:03:37.548549
+2023-11-13 17:03:37,557 DEBUG   HandlerThread:27418 [handler.py:handle_request():146] handle_request: status
+2023-11-13 17:03:37,560 INFO    WriterThread:27418 [datastore.py:open_for_write():85] open: /work3/s204148/DL02456_DDPM/wandb/run-20231113_170337-c2o6qmf8/run-c2o6qmf8.wandb
+2023-11-13 17:03:37,570 DEBUG   SenderThread:27418 [sender.py:send():380] send: header
+2023-11-13 17:03:37,606 DEBUG   SenderThread:27418 [sender.py:send():380] send: run
+2023-11-13 17:03:38,165 INFO    SenderThread:27418 [dir_watcher.py:__init__():211] watching files in: /work3/s204148/DL02456_DDPM/wandb/run-20231113_170337-c2o6qmf8/files
+2023-11-13 17:03:38,166 INFO    SenderThread:27418 [sender.py:_start_run_threads():1124] run started: c2o6qmf8 with start time 1699891417.549223
+2023-11-13 17:03:38,204 DEBUG   HandlerThread:27418 [handler.py:handle_request():146] handle_request: check_version
+2023-11-13 17:03:38,206 DEBUG   SenderThread:27418 [sender.py:send_request():407] send_request: check_version
+2023-11-13 17:03:38,341 DEBUG   HandlerThread:27418 [handler.py:handle_request():146] handle_request: run_start
+2023-11-13 17:03:38,362 DEBUG   HandlerThread:27418 [system_info.py:__init__():32] System info init
+2023-11-13 17:03:38,363 DEBUG   HandlerThread:27418 [system_info.py:__init__():47] System info init done
+2023-11-13 17:03:38,364 INFO    HandlerThread:27418 [system_monitor.py:start():194] Starting system monitor
+2023-11-13 17:03:38,365 INFO    SystemMonitor:27418 [system_monitor.py:_start():158] Starting system asset monitoring threads
+2023-11-13 17:03:38,365 INFO    HandlerThread:27418 [system_monitor.py:probe():214] Collecting system info
+2023-11-13 17:03:38,368 INFO    SystemMonitor:27418 [interfaces.py:start():190] Started cpu monitoring
+2023-11-13 17:03:38,371 INFO    SystemMonitor:27418 [interfaces.py:start():190] Started disk monitoring
+2023-11-13 17:03:38,376 INFO    SystemMonitor:27418 [interfaces.py:start():190] Started gpu monitoring
+2023-11-13 17:03:38,379 INFO    SystemMonitor:27418 [interfaces.py:start():190] Started memory monitoring
+2023-11-13 17:03:38,381 INFO    SystemMonitor:27418 [interfaces.py:start():190] Started network monitoring
+2023-11-13 17:03:38,410 DEBUG   HandlerThread:27418 [system_info.py:probe():196] Probing system
+2023-11-13 17:03:38,421 DEBUG   HandlerThread:27418 [system_info.py:_probe_git():181] Probing git
+2023-11-13 17:03:38,470 DEBUG   HandlerThread:27418 [system_info.py:_probe_git():189] Probing git done
+2023-11-13 17:03:38,470 DEBUG   HandlerThread:27418 [system_info.py:probe():244] Probing system done
+2023-11-13 17:03:38,471 DEBUG   HandlerThread:27418 [system_monitor.py:probe():223] {'os': 'Linux-5.4.258-1.el7.elrepo.x86_64-x86_64-with-glibc2.2.5', 'python': '3.8.4', 'heartbeatAt': '2023-11-13T16:03:38.411490', 'startedAt': '2023-11-13T16:03:37.502685', 'docker': None, 'cuda': None, 'args': (), 'state': 'running', 'program': '/work3/s204148/DL02456_DDPM/DDPM.py', 'codePathLocal': 'DDPM.py', 'codePath': 'DDPM.py', 'git': {'remote': 'https://github.com/JasminThari/DL02456_DDPM.git', 'commit': '2d12e0c3612c11f8f2ad620109ec21185d499b71'}, 'email': 'dr.rawstone@outlook.com', 'root': '/work3/s204148/DL02456_DDPM', 'host': 'n-62-12-19', 'username': 's204148', 'executable': '/work3/s204148/DL02456_DDPM/venv3/bin/python', 'cpu_count': 32, 'cpu_count_logical': 32, 'cpu_freq': {'current': 1716.3450625000003, 'min': 1200.0, 'max': 2900.0}, 'cpu_freq_per_core': [{'current': 1539.328, 'min': 1200.0, 'max': 2900.0}, {'current': 1199.98, 'min': 1200.0, 'max': 2900.0}, {'current': 2900.0, 'min': 1200.0, 'max': 2900.0}, {'current': 1200.245, 'min': 1200.0, 'max': 2900.0}, {'current': 1199.95, 'min': 1200.0, 'max': 2900.0}, {'current': 1200.217, 'min': 1200.0, 'max': 2900.0}, {'current': 1201.054, 'min': 1200.0, 'max': 2900.0}, {'current': 1200.127, 'min': 1200.0, 'max': 2900.0}, {'current': 1200.723, 'min': 1200.0, 'max': 2900.0}, {'current': 1200.137, 'min': 1200.0, 'max': 2900.0}, {'current': 1200.048, 'min': 1200.0, 'max': 2900.0}, {'current': 2899.999, 'min': 1200.0, 'max': 2900.0}, {'current': 1200.239, 'min': 1200.0, 'max': 2900.0}, {'current': 1200.923, 'min': 1200.0, 'max': 2900.0}, {'current': 1200.162, 'min': 1200.0, 'max': 2900.0}, {'current': 1200.773, 'min': 1200.0, 'max': 2900.0}, {'current': 2900.001, 'min': 1200.0, 'max': 2900.0}, {'current': 2591.766, 'min': 1200.0, 'max': 2900.0}, {'current': 2435.274, 'min': 1200.0, 'max': 2900.0}, {'current': 2900.336, 'min': 1200.0, 'max': 2900.0}, {'current': 2900.0, 'min': 1200.0, 'max': 2900.0}, {'current': 2467.491, 'min': 1200.0, 'max': 2900.0}, {'current': 2633.663, 'min': 1200.0, 'max': 2900.0}, {'current': 2899.999, 'min': 1200.0, 'max': 2900.0}, {'current': 2900.0, 'min': 1200.0, 'max': 2900.0}, {'current': 1488.105, 'min': 1200.0, 'max': 2900.0}, {'current': 1199.587, 'min': 1200.0, 'max': 2900.0}, {'current': 1200.758, 'min': 1200.0, 'max': 2900.0}, {'current': 1347.975, 'min': 1200.0, 'max': 2900.0}, {'current': 1553.279, 'min': 1200.0, 'max': 2900.0}, {'current': 1200.055, 'min': 1200.0, 'max': 2900.0}, {'current': 1388.293, 'min': 1200.0, 'max': 2900.0}], 'disk': {'/': {'total': 71.9168586730957, 'used': 7.182106018066406}}, 'gpu': 'NVIDIA A100-PCIE-40GB', 'gpu_count': 2, 'gpu_devices': [{'name': 'NVIDIA A100-PCIE-40GB', 'memory_total': 42949672960}, {'name': 'NVIDIA A100-PCIE-40GB', 'memory_total': 42949672960}], 'memory': {'total': 755.5554542541504}}
+2023-11-13 17:03:38,472 INFO    HandlerThread:27418 [system_monitor.py:probe():224] Finished collecting system info
+2023-11-13 17:03:38,472 INFO    HandlerThread:27418 [system_monitor.py:probe():227] Publishing system info
+2023-11-13 17:03:38,473 DEBUG   HandlerThread:27418 [system_info.py:_save_pip():52] Saving list of pip packages installed into the current environment
+2023-11-13 17:03:38,477 DEBUG   HandlerThread:27418 [system_info.py:_save_pip():68] Saving pip packages done
+2023-11-13 17:03:38,502 INFO    HandlerThread:27418 [system_monitor.py:probe():229] Finished publishing system info
+2023-11-13 17:03:38,544 DEBUG   SenderThread:27418 [sender.py:send():380] send: files
+2023-11-13 17:03:38,546 INFO    SenderThread:27418 [sender.py:_save_file():1380] saving file wandb-metadata.json with policy now
+2023-11-13 17:03:38,573 DEBUG   HandlerThread:27418 [handler.py:handle_request():146] handle_request: stop_status
+2023-11-13 17:03:38,575 DEBUG   HandlerThread:27418 [handler.py:handle_request():146] handle_request: internal_messages
+2023-11-13 17:03:38,577 DEBUG   SenderThread:27418 [sender.py:send_request():407] send_request: stop_status
+2023-11-13 17:03:38,899 DEBUG   SenderThread:27418 [sender.py:send():380] send: telemetry
+2023-11-13 17:03:38,901 DEBUG   SenderThread:27418 [sender.py:send():380] send: telemetry
+2023-11-13 17:03:38,902 DEBUG   SenderThread:27418 [sender.py:send():380] send: config
+2023-11-13 17:03:38,903 DEBUG   SenderThread:27418 [sender.py:send():380] send: config
+2023-11-13 17:03:38,904 DEBUG   SenderThread:27418 [sender.py:send():380] send: config
+2023-11-13 17:03:39,172 INFO    Thread-16 :27418 [dir_watcher.py:_on_file_created():271] file/dir created: /work3/s204148/DL02456_DDPM/wandb/run-20231113_170337-c2o6qmf8/files/requirements.txt
+2023-11-13 17:03:39,174 INFO    Thread-16 :27418 [dir_watcher.py:_on_file_created():271] file/dir created: /work3/s204148/DL02456_DDPM/wandb/run-20231113_170337-c2o6qmf8/files/wandb-metadata.json
+2023-11-13 17:03:39,427 INFO    wandb-upload_0:27418 [upload_job.py:push():131] Uploaded file /tmp/tmpwdjmeij2wandb/3ewdiztn-wandb-metadata.json
+2023-11-13 17:03:42,906 DEBUG   HandlerThread:27418 [handler.py:handle_request():146] handle_request: status_report
+2023-11-13 17:03:47,907 DEBUG   HandlerThread:27418 [handler.py:handle_request():146] handle_request: status_report
+2023-11-13 17:03:52,908 DEBUG   HandlerThread:27418 [handler.py:handle_request():146] handle_request: status_report
+2023-11-13 17:03:53,567 DEBUG   HandlerThread:27418 [handler.py:handle_request():146] handle_request: stop_status
+2023-11-13 17:03:53,569 DEBUG   HandlerThread:27418 [handler.py:handle_request():146] handle_request: internal_messages
+2023-11-13 17:03:53,570 DEBUG   SenderThread:27418 [sender.py:send_request():407] send_request: stop_status
+2023-11-13 17:03:55,205 INFO    Thread-16 :27418 [dir_watcher.py:_on_file_created():271] file/dir created: /work3/s204148/DL02456_DDPM/wandb/run-20231113_170337-c2o6qmf8/files/output.log
+2023-11-13 17:03:57,223 INFO    Thread-16 :27418 [dir_watcher.py:_on_file_modified():288] file/dir modified: /work3/s204148/DL02456_DDPM/wandb/run-20231113_170337-c2o6qmf8/files/output.log
+2023-11-13 17:03:57,955 DEBUG   HandlerThread:27418 [handler.py:handle_request():146] handle_request: status_report
+2023-11-13 17:04:03,640 DEBUG   HandlerThread:27418 [handler.py:handle_request():146] handle_request: status_report
+2023-11-13 17:04:04,246 INFO    Thread-16 :27418 [dir_watcher.py:_on_file_modified():288] file/dir modified: /work3/s204148/DL02456_DDPM/wandb/run-20231113_170337-c2o6qmf8/files/output.log
+2023-11-13 17:04:08,567 DEBUG   HandlerThread:27418 [handler.py:handle_request():146] handle_request: stop_status
+2023-11-13 17:04:08,570 DEBUG   SenderThread:27418 [sender.py:send_request():407] send_request: stop_status
+2023-11-13 17:04:08,570 DEBUG   HandlerThread:27418 [handler.py:handle_request():146] handle_request: internal_messages
+2023-11-13 17:04:08,805 DEBUG   HandlerThread:27418 [handler.py:handle_request():146] handle_request: status_report
+2023-11-13 17:04:09,262 INFO    Thread-16 :27418 [dir_watcher.py:_on_file_modified():288] file/dir modified: /work3/s204148/DL02456_DDPM/wandb/run-20231113_170337-c2o6qmf8/files/config.yaml
+2023-11-13 17:04:14,032 DEBUG   HandlerThread:27418 [handler.py:handle_request():146] handle_request: status_report
+2023-11-13 17:04:19,033 DEBUG   HandlerThread:27418 [handler.py:handle_request():146] handle_request: status_report
+2023-11-13 17:04:23,567 DEBUG   HandlerThread:27418 [handler.py:handle_request():146] handle_request: stop_status
+2023-11-13 17:04:23,569 DEBUG   SenderThread:27418 [sender.py:send_request():407] send_request: stop_status
+2023-11-13 17:04:23,608 DEBUG   HandlerThread:27418 [handler.py:handle_request():146] handle_request: internal_messages
+2023-11-13 17:04:24,811 DEBUG   HandlerThread:27418 [handler.py:handle_request():146] handle_request: status_report
+2023-11-13 17:04:29,813 DEBUG   HandlerThread:27418 [handler.py:handle_request():146] handle_request: status_report
+2023-11-13 17:04:34,814 DEBUG   HandlerThread:27418 [handler.py:handle_request():146] handle_request: status_report
+2023-11-13 17:04:38,382 DEBUG   SystemMonitor:27418 [system_monitor.py:_start():172] Starting system metrics aggregation loop
+2023-11-13 17:04:38,390 DEBUG   SenderThread:27418 [sender.py:send():380] send: stats
+2023-11-13 17:04:38,567 DEBUG   HandlerThread:27418 [handler.py:handle_request():146] handle_request: stop_status
+2023-11-13 17:04:38,570 DEBUG   SenderThread:27418 [sender.py:send_request():407] send_request: stop_status
+2023-11-13 17:04:38,570 DEBUG   HandlerThread:27418 [handler.py:handle_request():146] handle_request: internal_messages
+2023-11-13 17:04:40,799 DEBUG   HandlerThread:27418 [handler.py:handle_request():146] handle_request: status_report
+2023-11-13 17:04:45,801 DEBUG   HandlerThread:27418 [handler.py:handle_request():146] handle_request: status_report
+2023-11-13 17:04:50,802 DEBUG   HandlerThread:27418 [handler.py:handle_request():146] handle_request: status_report
+2023-11-13 17:04:53,568 DEBUG   HandlerThread:27418 [handler.py:handle_request():146] handle_request: stop_status
+2023-11-13 17:04:53,571 DEBUG   SenderThread:27418 [sender.py:send_request():407] send_request: stop_status
+2023-11-13 17:04:53,571 DEBUG   HandlerThread:27418 [handler.py:handle_request():146] handle_request: internal_messages
+2023-11-13 17:04:56,763 DEBUG   HandlerThread:27418 [handler.py:handle_request():146] handle_request: status_report
+2023-11-13 17:05:01,766 DEBUG   HandlerThread:27418 [handler.py:handle_request():146] handle_request: status_report
+2023-11-13 17:05:06,767 DEBUG   HandlerThread:27418 [handler.py:handle_request():146] handle_request: status_report
+2023-11-13 17:05:08,396 DEBUG   SenderThread:27418 [sender.py:send():380] send: stats

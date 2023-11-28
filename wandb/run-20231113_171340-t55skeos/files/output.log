@@ -1,0 +1,17 @@
+
+0
+Downloading: "https://download.pytorch.org/models/inception_v3_google-0cc3c7bd.pth" to /zhome/61/c/156510/.cache/torch/hub/checkpoints/inception_v3_google-0cc3c7bd.pth
+100%|██████████| 104M/104M [00:01<00:00, 105MB/s]
+Calculating Inception Score:   0%|          | 0/10 [00:00<?, ?it/s]
+Traceback (most recent call last):
+  File "/zhome/61/c/156510/Downloads/pycharm-2022.3.3/plugins/python/helpers/pydev/pydevd.py", line 1496, in _exec
+    pydev_imports.execfile(file, globals, locals)  # execute the script
+  File "/zhome/61/c/156510/Downloads/pycharm-2022.3.3/plugins/python/helpers/pydev/_pydev_imps/_pydev_execfile.py", line 18, in execfile
+    exec(compile(contents+"\n", file, 'exec'), glob, loc)
+  File "/work3/s204148/DL02456_DDPM/DDPM.py", line 193, in <module>
+  File "/work3/s204148/DL02456_DDPM/DDPM.py", line 148, in train
+    is_mean, is_std = inception_score(sampled_images)
+  File "/work3/s204148/DL02456_DDPM/DDPM.py", line 60, in inception_score
+    preds = get_pred(preprocess(img_batch))
+  File "/work3/s204148/DL02456_DDPM/DDPM.py", line 36, in get_pred
+    x = (x - x.min()) / (x.max() - x.min())

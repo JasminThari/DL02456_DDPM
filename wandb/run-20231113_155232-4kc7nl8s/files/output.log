@@ -1,0 +1,16 @@
+Traceback (most recent call last):
+  File "DDPM.py", line 136, in <module>
+    train(args)
+  File "DDPM.py", line 74, in train
+    dataloader = get_data(args)
+  File "/work3/s204148/DL02456_DDPM/utils.py", line 51, in get_data
+    dataset = torchvision.datasets.ImageFolder(args.dataset_path, transform=transforms)
+  File "/work3/s204148/DL02456_DDPM/venv3/lib/python3.8/site-packages/torchvision/datasets/folder.py", line 310, in __init__
+    super().__init__(
+  File "/work3/s204148/DL02456_DDPM/venv3/lib/python3.8/site-packages/torchvision/datasets/folder.py", line 146, in __init__
+    samples = self.make_dataset(self.root, class_to_idx, extensions, is_valid_file)
+  File "/work3/s204148/DL02456_DDPM/venv3/lib/python3.8/site-packages/torchvision/datasets/folder.py", line 190, in make_dataset
+    return make_dataset(directory, class_to_idx, extensions=extensions, is_valid_file=is_valid_file)
+  File "/work3/s204148/DL02456_DDPM/venv3/lib/python3.8/site-packages/torchvision/datasets/folder.py", line 103, in make_dataset
+    raise FileNotFoundError(msg)
+FileNotFoundError: Found no valid file for the classes raw. Supported extensions are: .jpg, .jpeg, .png, .ppm, .bmp, .pgm, .tif, .tiff, .webp
