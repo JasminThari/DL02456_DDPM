@@ -16,4 +16,4 @@ module load cuda/11.1
 
 source venv/bin/activate
 
-python DDPM_high_res.py --dataset_path "CIFAR10" --run_name "CIFAR10_3_maxpools" --maxpool 3 --sample 0
+python DDPM_high_res.py --dataset_path "CIFAR10" --run_name "CIFAR10_3_maxpools_32" --maxpool 3 --sample 0
