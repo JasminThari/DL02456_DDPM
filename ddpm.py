@@ -8,15 +8,13 @@ from matplotlib import pyplot as plt
 from tqdm import tqdm
 from torch import optim
 from utils import *
-from modules_high_res import UNet
+from modules import UNet
 from torch.utils.tensorboard import SummaryWriter
 import argparse
 import wandb
 from pytorch_fid import fid_score
 from torchvision.models import inception_v3
 from scipy.stats import entropy
-from tqdm import tqdm
-from datetime import datetime as dt
 
 wandb.login(key="cc9eaf6580b2ef9ef475fc59ba669b2de0800b92")
 
@@ -69,8 +67,8 @@ class DiffusionProcess:
 
 def train(args):
     device = args.device
-    dataloader = get_data(args)    
-    model = UNet(c_in=args.img_shape[0] ,c_out=args.img_shape[0],img_dim=args.img_shape[1],initial_feature_maps=64,num_max_pools=args.maxpools).to(device)
+    dataloader = get_data(args)
+    model = UNet(c_in=3,c_out=3).to(device)
     optimizer = optim.AdamW(model.parameters(), lr=args.lr)
     mse = nn.MSELoss()
     diffusion = DiffusionProcess(**vars(args))
@@ -78,8 +76,9 @@ def train(args):
 
 
 
-    for epoch in tqdm(range(args.epochs), desc='Epochs'):
-        for img_batch, _ in tqdm(dataloader, desc='Batches', leave=False):
+    for epoch in range(args.epochs):
+        print(epoch)
+        for img_batch, _ in dataloader:
             img_batch = img_batch.to(device)
             random_timestep = torch.randint(low=1, high=args.T, size=(img_batch.shape[0],)).to(device)
             noisy_image, noise = diffusion.noising(img_batch, random_timestep)
@@ -97,59 +96,48 @@ def train(args):
         wandb.log({"Training Loss": loss.item()})
         wandb.log({"Sampled Images": [wandb.Image(img) for img in sampled_images]})
 
-        if args.sample:
-            print("I am here")
-            if (epoch%10)==0:
-                
-                for i in range(64):
+        if (epoch%10)==0:
 
-                    
-                    sampled_images = diffusion.sampling(model, num_img=1)
+            for i in range(64):
+                sampled_images_for_fid = diffusion.sampling(model, num_img=1)
+                path_to_sampled_images = os.path.join("results", f"generated_images/{epoch}_{i}.jpg")
+                save_images(sampled_images_for_fid, path_to_sampled_images)
 
-                    folder_path_to_sampled_images = f"results/{args.run_name}/{epoch}"
-                    if not os.path.exists(folder_path_to_sampled_images):
-                        os.mkdir(folder_path_to_sampled_images)
+            # Specify path to real images
+            path_to_sampled_images = os.path.join("results", f"sampled_images_fid")
+            path_to_real_images = "results/mnist_images_scaled"
 
-                    path_to_sampled_images = os.path.join(folder_path_to_sampled_images, f"{i}.jpg")
-                    save_images(sampled_images, path_to_sampled_images)
+            # path_to_sampled_images = os.path.join("results", f"sampled_images_cifar_fid")
+            # path_to_real_images = "results/cifar10_images_scaled"
 
-                # Calculate FID score
-                fid_value = fid_score.calculate_fid_given_paths([folder_path_to_sampled_images, args.path_to_real_images],
-                                                                batch_size=1, device=device, dims=64)
+            # Calculate FID score
+            fid_value = fid_score.calculate_fid_given_paths([path_to_sampled_images, path_to_real_images],
+                                                            batch_size=1, device=device, dims=64)
 
-                wandb.log({"FID": fid_value, "epoch": epoch})
+            wandb.log({"FID": fid_value, "epoch": epoch})
 
 
-
-date = dt.now()
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument("--dataset_path", type=str, default="CIFAR10", help="give dataset path here")
-    parser.add_argument("--run_name", type=str, default=f"CIFAR10_{date}", help="give run name here to wandb")
+    parser.add_argument("--run_name", type=str, default="cifar10", help="give run name here to wandb")
     parser.add_argument("--batch_size", type=int, default=12, help="batchsize")
-    parser.add_argument("--epochs", type=int, default=150, help="epoch size here")
+    parser.add_argument("--epochs", type=int, default=200, help="epoch size here")
     parser.add_argument("--lr", type=float, default=3e-4, help="learning rate")
-    parser.add_argument("--T", type=int, default=1000, help="Timestep") 
+    parser.add_argument("--T", type=int, default=1000, help="Timestep")
     parser.add_argument("--device", type=str, default="cuda", help="device")
-    parser.add_argument("--maxpools",type=int,default=3,help="give number of maxpool in the UNET")
-    parser.add_argument("--sample",type=int,default=1,help="Whether to sample and calculate FID during training. 1 is true and 0 is false")
-
-
-
 
     args = parser.parse_args()
 
     if args.dataset_path == "MNIST":
-        args.img_shape = (1, 28,28)
-        args.image_size = 28  
-        args.path_to_real_images =  "real_images/MNIST_real_images"
+        args.img_shape = (3, 64,64)
+        args.image_size = 64  # landscape fix
     elif args.dataset_path == "CIFAR10":
-        args.img_shape = (3, 32, 32)
-        args.image_size = 32  
-        args.path_to_real_images =  "real_images/CIFAR10_real_images"
+        args.img_shape = (3, 64, 64)
+        args.image_size = 64  # landscape fix
     elif args.dataset_path == "landscape_img_folder":
-        args.img_shape = (3, 128, 128)
-        args.image_size = 128 
+        args.img_shape = (3, 64, 64)
+        args.image_size = 64  # landscape fix
     else:
         raise AssertionError("UNKNOWN DATASET!!!!")
 
@@ -159,20 +147,6 @@ if __name__ == '__main__':
 
     if not os.path.exists(f"results/{args.run_name}"):
         os.mkdir(f"results/{args.run_name}")
-
-    import logging
-    # Initialize the logger
-    logging.basicConfig(level=logging.INFO)
-
-    # Log GPU information
-    if torch.cuda.is_available():
-        device = torch.cuda.current_device()
-        gpu_name = torch.cuda.get_device_name(device)
-        gpu_memory = torch.cuda.get_device_properties(device).total_memory / (1024 ** 2)  # Convert to megabytes
-        logging.info(f'Using GPU: {gpu_name}')
-        logging.info(f'GPU Memory: {gpu_memory:.2f} MB')
-    else:
-        logging.info('No GPU available, using CPU.')
 
     wandb.init(project="DDPM_Project", name=args.run_name)#, mode="disabled")
     wandb.config.epochs = args.epochs
