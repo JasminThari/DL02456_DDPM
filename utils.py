@@ -12,6 +12,14 @@ def plot_images(images):
     ], dim=-2).permute(1, 2, 0).cpu())
     plt.show()
 
+def plot_images_gray_scale(images, fig_size=(8,8)):
+    images = images.squeeze(1)
+    plt.figure(figsize=fig_size)
+    # Use the 'gray' colormap for grayscale
+    plt.imshow(torch.cat([i for i in images.cpu()], dim=-1), cmap='gray')
+    plt.axis('off')
+    plt.show()
+
 def save_images(images, path, **kwargs):
     grid = torchvision.utils.make_grid(images, **kwargs)
     ndarr = grid.permute(1, 2, 0).to('cpu').numpy()
