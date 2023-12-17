@@ -15,10 +15,10 @@ from utils import *
 from modules import UNet
 
 # Initialize wandb
-wandb.login(key="cc9eaf6580b2ef9ef475fc59ba669b2de0800b92")
+#wandb.login(key="cc9eaf6580b2ef9ef475fc59ba669b2de0800b92")
 
 class DiffusionProcess:
-    def __init__(self, img_shape=(3,64,64), T=1000, beta_min=10e-4, beta_max=20e-3, device="cuda",**kwargs):
+    def __init__(self, img_shape=(3,64,64), T=1000, beta_min=10e-4, beta_max=20e-3, device="cpu",**kwargs):
         self.img_shape = img_shape
         self.T = T
         self.beta_min = beta_min

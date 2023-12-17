@@ -126,7 +126,7 @@ class Up(nn.Module):
 
 class UNet(nn.Module):
     def __init__(self, c_in=3, c_out=3, img_dim=64, num_max_pools=3, initial_feature_maps=64, time_dim=256,
-                 device="cuda"):
+                 device="cpu"):
         # num_max_pools is the number of times we downsample the image
         # make an reasionable assumption about the size of the image and choose num_max_pools accordingly
         # as an example an 64 x 64 image would go from 64 -> 32 -> 16 -> 8 with 3 max pools
@@ -189,7 +189,7 @@ class UNet(nn.Module):
     def pos_encoding(self, t, channels):
         inv_freq = 1.0 / (
                 10000
-                ** (torch.arange(0, channels, 2, device=self.device).float() / channels)
+                ** (torch.arange(0, channels, 2).float() / channels)
         )
         pos_enc_a = torch.sin(t.repeat(1, channels // 2) * inv_freq)
         pos_enc_b = torch.cos(t.repeat(1, channels // 2) * inv_freq)
