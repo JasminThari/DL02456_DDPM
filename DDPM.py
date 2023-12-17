@@ -1,6 +1,5 @@
 
 import os
-
 import numpy as np
 import torch
 import torch.nn as nn
@@ -95,26 +94,27 @@ def train(args):
         torch.save(model.state_dict(), os.path.join("models", args.run_name, f"ckpt.pt"))
         wandb.log({"Training Loss": loss.item()})
         wandb.log({"Sampled Images": [wandb.Image(img) for img in sampled_images]})
+        
+        if args.sample:
+            if (epoch%10)==0:
 
-        if (epoch%10)==0:
+                for i in range(64):
+                    sampled_images_for_fid = diffusion.sampling(model, num_img=1)
+                    path_to_sampled_images = os.path.join("results", f"generated_images/{epoch}_{i}.jpg")
+                    save_images(sampled_images_for_fid, path_to_sampled_images)
 
-            for i in range(64):
-                sampled_images_for_fid = diffusion.sampling(model, num_img=1)
-                path_to_sampled_images = os.path.join("results", f"generated_images/{epoch}_{i}.jpg")
-                save_images(sampled_images_for_fid, path_to_sampled_images)
+                # Specify path to real images
+                path_to_sampled_images = os.path.join("results", f"sampled_images_fid")
+                path_to_real_images = "results/mnist_images_scaled"
 
-            # Specify path to real images
-            path_to_sampled_images = os.path.join("results", f"sampled_images_fid")
-            path_to_real_images = "results/mnist_images_scaled"
+                # path_to_sampled_images = os.path.join("results", f"sampled_images_cifar_fid")
+                # path_to_real_images = "results/cifar10_images_scaled"
 
-            # path_to_sampled_images = os.path.join("results", f"sampled_images_cifar_fid")
-            # path_to_real_images = "results/cifar10_images_scaled"
+                # Calculate FID score
+                fid_value = fid_score.calculate_fid_given_paths([path_to_sampled_images, path_to_real_images],
+                                                                batch_size=1, device=device, dims=64)
 
-            # Calculate FID score
-            fid_value = fid_score.calculate_fid_given_paths([path_to_sampled_images, path_to_real_images],
-                                                            batch_size=1, device=device, dims=64)
-
-            wandb.log({"FID": fid_value, "epoch": epoch})
+                wandb.log({"FID": fid_value, "epoch": epoch})
 
 
 if __name__ == '__main__':
@@ -126,6 +126,8 @@ if __name__ == '__main__':
     parser.add_argument("--lr", type=float, default=3e-4, help="learning rate")
     parser.add_argument("--T", type=int, default=1000, help="Timestep")
     parser.add_argument("--device", type=str, default="cuda", help="device")
+    parser.add_argument("--sample",type=int,default=1,help="Whether to sample and calculate FID during training. 1 is true and 0 is false")
+
 
     args = parser.parse_args()
 
@@ -148,7 +150,7 @@ if __name__ == '__main__':
     if not os.path.exists(f"results/{args.run_name}"):
         os.mkdir(f"results/{args.run_name}")
 
-    wandb.init(project="DDPM_Project", name=args.run_name)#, mode="disabled")
+    wandb.init(project="DDPM_Project", name=args.run_name)
     wandb.config.epochs = args.epochs
     wandb.config.batch_size = args.batch_size
     wandb.config.lr = args.lr

@@ -1,3 +1,4 @@
+#%%
 import os
 import torch
 from torchvision import transforms
@@ -7,6 +8,7 @@ from PIL import Image
 
 # Define the transformations
 transforms_cifar = transforms.Compose([
+    transforms.Resize((64, 64)),
     transforms.ToTensor(),
     transforms.Normalize((0.5, 0.5, 0.5), (0.5, 0.5, 0.5))
 ])
@@ -15,7 +17,7 @@ transforms_cifar = transforms.Compose([
 dataset_cifar = CIFAR10(root="CIFAR10", download=True, train=True, transform=transforms_cifar)
 
 # Create a directory to save the images
-output_dir_cifar = "real_images/CIFAR10_real_images"
+output_dir_cifar = "real_images/CIFAR10_real_images_64"
 os.makedirs(output_dir_cifar, exist_ok=True)
 
 # Initialize a dictionary to keep track of the number of saved images for each label
@@ -35,3 +37,5 @@ for data, label in tqdm(dataset_cifar):
         saved_counts_cifar[label] += 1
 
 print("CIFAR10 images saved successfully.")
+
+# %%
