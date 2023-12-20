@@ -1,3 +1,5 @@
+# Course 02456 - Replicating DDPM papers results
+
 Welcome to the DL02456_DDPM Repository!
 
 This repository is an integral component of the exam project titled "Denoising Diffusion Probabilistic Models: A Comprehensive Replication Study", part of the course "Deep Learning (02456)" at DTU COMPUTE Here, you'll find valuable resources and insights related to our project.
@@ -10,20 +12,21 @@ Key Contents:
 - `DDPM_Notebook` --> This notebook demonstrates the results achieved from the DDPM models obtained by running the `DDPM.py` file at HPC.
 - `Calc_FID_2048.py` --> This file calculates the FID score of the trained models using 2048 dimensional feature vector for inceptionV3. 
 
-#How to run our scripts
+### How to run our scripts
 
-The `DDPM_Notebook` shows some of our results that we have in the report. However if you want to run the training for mnist you will have to do the following:
+The `DDPM_Notebook` shows some of our results that we have in the report. However if you want to run the training you will have to do the following:
 
+First enable the environment
 ```
 module load cuda/11.1
-source venv3/bin/activate
+source venv/bin/activate
+```
+For replicating mnist training results do:
+```
 python DDPM.py --dataset_path "MNIST" --run_name "MNIST_1_23_11"
 ```
-
-Likewise if you want to run the training for mnist you will have to do the following:
+Likewise for replicating cifar training results do:
 ```
-module load cuda/11.1
-source venv3/bin/activate
 python DDPM.py --dataset_path "CIFAR10" --run_name "CIFAR10_1_23_11"
 ```
 
@@ -38,6 +41,7 @@ source venv/bin/activate
 module load cuda/11.1
 pip install -r requirements.txt
 ```
+Remember that training this ddpm requires very gpu memory requirements therefore we only have a guide showcasing how to run on an a100 40gb gpu.
 
 
 
