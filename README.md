@@ -1,4 +1,4 @@
-# Course 02456 - Replicating DDPM papers results
+# Course 02456 - Replicating DDPM paper results
 
 Welcome to the DL02456_DDPM Repository!
 
