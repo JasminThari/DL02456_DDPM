@@ -28,9 +28,9 @@ How to install the environment on hpc:
 module load python3/3.8.9
 python -m venv venv
 source venv/bin/activate
+module load cuda/11.1
 pip install -r requirements.txt
 ```
-
 
 
 
