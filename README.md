@@ -12,12 +12,19 @@ Key Contents:
 
 #How to run our scripts
 
-The `DDPM_Notebook` shows some of our results that we have in the report. However if you want to run the training you will have to do the following:
+The `DDPM_Notebook` shows some of our results that we have in the report. However if you want to run the training for mnist you will have to do the following:
 
 ```
 module load cuda/11.1
 source venv3/bin/activate
 python DDPM.py --dataset_path "MNIST" --run_name "MNIST_1_23_11"
+```
+
+Likewise if you want to run the training for mnist you will have to do the following:
+```
+module load cuda/11.1
+source venv3/bin/activate
+python DDPM.py --dataset_path "CIFAR10" --run_name "CIFAR10_1_23_11"
 ```
 
 This assumes that you have an environment called venv with the correct dependencies.
