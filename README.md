@@ -32,9 +32,9 @@ python DDPM.py --dataset_path "CIFAR10" --run_name "CIFAR10_1_23_11"
 
 This assumes that you have an environment called venv with the correct dependencies.
 
+#### Environment
 How to install the environment on hpc:
 
-##### Environment
 ```
 module load python3/3.8.9
 python -m venv venv
