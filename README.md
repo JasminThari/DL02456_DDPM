@@ -10,8 +10,8 @@ Key Contents:
 - `DDPM_Notebook` --> This notebook demonstrates the results achieved from the DDPM models obtained by running the `DDPM.py` file at HPC.
 - `Calc_FID_2048.py` --> This file calculates the FID score of the trained models using 2048 dimensional feature vector for inceptionV3. 
 
-´´´ module load cuda/11.1
+``` module load cuda/11.1
 
 source venv3/bin/activate
 
-python DDPM.py --dataset_path "MNIST" --run_name "MNIST_1_23_11"´´´
+python DDPM.py --dataset_path "MNIST" --run_name "MNIST_1_23_11"```
