@@ -42,7 +42,7 @@ source venv/bin/activate
 module load cuda/11.1
 pip install -r requirements.txt
 ```
-Remember that training this ddpm requires very gpu memory requirements therefore we only have a guide showcasing how to run on an a100 40gb gpu.
+Remember that training this ddpm requires very high gpu memory requirements therefore we only have a guide showcasing how to run on an a100 40gb gpu.
 
 
 
